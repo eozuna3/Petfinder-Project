@@ -137,32 +137,36 @@ $petFoundList.on("click", ".choose", handleChooseBtnClick);
 // $loginBtn.on("click", handleFormLogin);
 
 // ADDED BY BD
-var dummyArray = [
-  "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-];
-
 // var dummyArray = [
-//   "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-//   "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-//   "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+//   "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
 // ];
 
 var surveyTaken = false;
 
+var dummyArray = [
+  "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1445820200644-69f87d946277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+];
+
 function addCards() {
-  for (var i = 0; i < dummyArray.length; i++) {
-    var newDiv = $("<div>");
-    if (!surveyTaken) {
-      newDiv.attr("class", "carousel-item active");
-      var image = $("<img>");
-      image.attr("src", dummyArray[i]).attr("class", "header");
-      newDiv.append(image);
-      $(".caro-controls").hide();
-    } else {
+  if (!surveyTaken) {
+    $("#carousel-container").hide();
+  } else {
+    addIndicators();
+    $("#carousel-container").show();
+    $(".caro-controls").show();
+    for (var i = 0; i < dummyArray.length; i++) {
+      // if the survey has been taken and there are results, add images to cards in the carousel
+      console.log(i);
+      var newDiv = $("<div>");
       if (i === 0) {
+        // first item in the carousel is 'active'
         newDiv.attr("class", "carousel-item active card");
+        console.log("we've gotten to l164");
       } else {
         newDiv.attr("class", "carousel-item card");
+        console.log("we've gotten to l167");
       }
       var image = $("<img>");
       image
@@ -174,14 +178,9 @@ function addCards() {
         .attr("class", "card-title")
         .html(i);
       cardBody.append(cardTitle);
-      // var cardInfo = $("<p>").attr("class", "card-text")
-      // var links = `<a href='${optionsArray[i].deployed}' target="_blank">Deployed</a> <br> <a href='${optionsArray[i].gitHub}' target="_blank"    >GitHub Repo</a>` ;
-      // cardInfo.append(links);
-      // cardBody.append(cardInfo);
       newDiv.append(cardBody);
-      addIndicators();
+      $(".carousel-inner").append(newDiv);
     }
-    $(".carousel-inner").append(newDiv);
   }
 }
 
@@ -203,3 +202,12 @@ function addIndicators() {
 
 addCards();
 
+$("#surveyBtn").on("click", function() {
+  if ($(this).attr("taken") === "false") {
+    $("#header-container").hide();
+    surveyTaken = true;
+    $(this).attr("taken", "true");
+    console.log($(this));
+    addCards();
+  }
+});

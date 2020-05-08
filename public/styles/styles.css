@@ -12,16 +12,25 @@ Black - #000000
   line-height: 2.5;
 }
 
+#header-caro-container {
+  width: 62vw;
+  height: 45vw;
+  overflow: hidden;
+}
+
 body {
   background-color: #ECECEC;
 }
 
-#searchCaro {
-  height: 40vw;
-  width: fit-content;
+.carousel {
+  width: 60vw;
+  max-height: 39vw;
 }
 
-.searchResultImg, .header {
-  height: 40vw;
-  width: auto;
+#header-container, #header {
+    width: 60vw;
+}
+
+.searchResultImg {
+  max-height: 40vw;
 }
