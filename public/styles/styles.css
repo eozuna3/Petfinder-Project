@@ -3,11 +3,25 @@ Pink - #F78888
 Yellow - #F3D250
 Grey - #ECECEC
 Light Blue - #90CCF4
-Dark Blue - #5DA2D5
+Dark Blue - #5CA2D5
 White - #ffffff
 Black - #000000
 */
 
 .list-group-item {
   line-height: 2.5;
+}
+
+body {
+  background-color: #ECECEC;
+}
+
+#searchCaro {
+  height: 40vw;
+  width: fit-content;
+}
+
+.searchResultImg, .header {
+  height: 40vw;
+  width: auto;
 }
