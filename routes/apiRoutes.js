@@ -9,7 +9,7 @@ var axios = require("axios");
 module.exports = function (app) {
   // Get all examples
   app.get("/api/examples", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.ChosenPet.findAll({}).then(function (dbExamples) {
       res.json(dbExamples);
     });
   });
@@ -17,7 +17,10 @@ module.exports = function (app) {
   // Create a newly chosen pet
   app.post("/api/choosePet", function (req, res) {
     console.log("req.body", req.body);
-    db.ChosenPet.create(req.body).then(function (dbChosenPets) {
+    db.ChosenPet.create({
+      petId: req.body.petId,
+      customerId: req.body.customerId
+    }).then(function (dbChosenPets) {
       res.json(dbChosenPets);
     });
   });
@@ -39,7 +42,6 @@ module.exports = function (app) {
       '","client_secret":"' +
       process.env.PETFINDER_CLIENT_SECRET +
       '"}';
-    console.log("search route found");
     axios({
       headers: {
         "Content-Type": "application/json",
@@ -59,15 +61,15 @@ module.exports = function (app) {
           url: "https://api.petfinder.com/v2/types"
         })
           .then(function (typeObject) {
-            for (var i = 0; i < typeObject.data.types.length; i++) {
-              console.log(typeObject.data.types[i]);
-            }
+            // for (var i = 0; i < typeObject.data.types.length; i++) {
+            //   console.log(typeObject.data.types[i]);
+            // }
             var petTypeObject = {
               petType: typeObject.data.types
             };
             // res.render("search", petTypeObject).end();  // only to use if go back to search.handlebars
             res
-              .header("Authentication", process.env.PETFINDER_ACCESS_TOKEN)
+              .header("Authentication", process.env.PETFINDER_ACCESS_TOKEN)  //send back token as well
               .json(petTypeObject)
               .end();
           })
@@ -85,8 +87,8 @@ module.exports = function (app) {
 
   // get matching pets
   app.get("/api/searchPets", function (req, res) {
-    console.log("searchPets route found");
-    console.log("process.env.PetToken: ", process.env.PETFINDER_ACCESS_TOKEN);
+    // console.log("searchPets route found");
+    // console.log("process.env.PetToken: ", process.env.PETFINDER_ACCESS_TOKEN);
     console.log("req.params", req.params);
 
     axios({
@@ -99,7 +101,7 @@ module.exports = function (app) {
       params: req.params
     })
       .then(function (searchPetsResponse) {
-        console.log(searchPetsResponse);
+        // console.log(searchPetsResponse);
         var petsFoundObject = {
           petsFound: searchPetsResponse.data.animals
         };

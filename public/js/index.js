@@ -6,7 +6,7 @@ var $petFoundList = $("#petFound-list");
 // *** Added by SB for Friendly Neighborhood Pet Finder
 var petTypesObject;     //global object with petfinder type object for search
 var $loadPetTypesBtn = $("#loadPetTypes");    // button to load type object from petfinder
-var $searchPetsBtn = $('#searchPets');
+var $searchPetsBtn = $("#searchPets");
 var $loginBtn = $("#login");
 
 // The API object contains methods for each kind of request we'll make
@@ -31,12 +31,12 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "GET",
-      url: "api/searchPets/" + params
+      url: "api/searchPets" + params
       // data: JSON.stringify(example)
     })
       .then(function (petsFound) {
         // console.log("petTypes: ", petsFound);
-        petsFoundObject = petsFound;
+        petsFoundObject = petsFound;    // assign response object to global
         // console.log(petsFoundObject);
         // location.reload();
       })
@@ -65,9 +65,9 @@ var displayPetsFound = function () {
   var testArray = petsFoundObject.petsFound;
   console.log("testArray", testArray);
   var $pets = testArray.map(function (val) {
-    var $a = $("<a>")
+    var $a = $("<a target='_blank'>")
       .text(val.name)
-      .attr("href", "/example/" + val.id);
+      .attr("href", val.url);
 
     var $li = $("<li>")
       .attr({
