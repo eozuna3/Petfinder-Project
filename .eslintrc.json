@@ -24,7 +24,10 @@
         "camelcase": "error",
         "indent": [
             "error",
-            4
+
+
+            5
+
         ],
         "quotes": [
             "error",
