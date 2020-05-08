@@ -1,6 +1,8 @@
 /* eslint-disable indent */
 // Get references to page elements
 
+// const e = require("express");
+
 var $petFoundList = $("#petFound-list");
 
 // *** Added by SB for Friendly Neighborhood Pet Finder
@@ -95,10 +97,10 @@ var displayPetsFound = function () {
 // ** ADDED BY SB
 // handleLoadPetTypesBtnClick is called when loadPetTypes button is clicked
 // variable petTypes is loaded with PetFinder types object
-var handleLoadPetTypesBtnClick = function () {
+var handleLoadPetTypesBtnClick = function() {
   console.log("loadTypes");
 
-  API.loadPetTypes().then(function () {
+  API.loadPetTypes().then(function() {
     // refreshExamples();
   });
 };
@@ -137,3 +139,67 @@ $loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
 $searchPetsBtn.on("click", handleSearchPetsBtnClick);
 $petFoundList.on("click", ".choose", handleChooseBtnClick);
 // $loginBtn.on("click", handleFormLogin);
+
+
+
+// ADDED BY BD
+// var dummyArray = [
+//   "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+// ];
+
+var dummyArray = [
+  "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+  "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+];
+
+var surveyTaken = true;
+
+function addCards() {
+  for (var i = 0; i < dummyArray.length; i++) {
+    var newDiv = $("<div>");
+    if (!surveyTaken) {
+      newDiv.attr("class", "carousel-item active");
+      var image = $("<img>");
+      image.attr("src", dummyArray[i]).attr("class", "header");
+      newDiv.append(image);
+    } else {
+      if (i === 0) {
+        newDiv.attr("class", "carousel-item active card");
+      } else {
+        newDiv.attr("class", "carousel-item card");
+      }
+      var image = $("<img>");
+      image
+        .attr("src", dummyArray[i])
+        .attr("class", "searchResultImg card-img-top");
+      newDiv.append(image);
+      var cardBody = $("<div>").attr("class", "card-body");
+      var cardTitle = $("<h5>")
+        .attr("class", "card-title")
+        .html(i);
+      cardBody.append(cardTitle);
+      // var cardInfo = $("<p>").attr("class", "card-text")
+      // var links = `<a href='${optionsArray[i].deployed}' target="_blank">Deployed</a> <br> <a href='${optionsArray[i].gitHub}' target="_blank"    >GitHub Repo</a>` ;
+      // cardInfo.append(links);
+      // cardBody.append(cardInfo);
+      newDiv.append(cardBody);
+    }
+    $(".carousel-inner").append(newDiv);
+  }
+}
+
+function addIndicators() {
+  for (var i = 0; i < dummyArray.length; i++) {
+      if (i === 0) {
+          var listItem = $("<li>").attr("data-target", "#demo").attr("data-slide-to", i).attr("class", "active");
+      }
+      else {
+          var listItem = $("<li>").attr("data-target", "#demo").attr("data-slide-to", i);
+      }
+      $(".carousel-indicators").append(listItem);
+  }
+}
+
+addCards();
+addIndicators();
