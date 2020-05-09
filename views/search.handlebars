@@ -1,36 +1,91 @@
 {{!-- Navbar --}}
+<nav class="navbar navbar-light bg-light py-3">
+     <a class="navbar-brand">Your Friendly Neighborhood Pet Adoption</a>
+     <form class="form-inline">
+          <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="homePageBtn">Home Page</button>
+          <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="logOutBtn">Log Out</button>
+     </form>
+</nav>
 
-<div class="container" id="header-caro-container">
+
+{{!-- Carousel --}}
+<div class="container-fluid mt-5" id="header-caro-container">
      <div class="container" id="header-container">
-          <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" id="header">
+          <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+               id="header">
      </div>
 
      <div class="container" id="carousel-container">
-          {{!-- Carousel --}}
           <div id="searchCaro" class="carousel slide container" data-ride="carousel">
-          <!-- Indicators -->
-          <ul class="carousel-indicators">
-          </ul>            
-          <!-- The slideshow -->
-          <div class="carousel-inner">
+               <!-- Indicators -->
+               <ul class="carousel-indicators">
+               </ul>
+               <!-- The slideshow -->
+               <div class="carousel-inner">
+               </div>
+
+               <!-- Left and right controls -->
+               <a class="caro-controls carousel-control-prev" href="#searchCaro" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+               </a>
+
+               <a class="caro-controls carousel-control-next" href="#searchCaro" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+               </a>
           </div>
-                         
-          <!-- Left and right controls -->
-          <a class="caro-controls carousel-control-prev" href="#searchCaro" data-slide="prev">
-               <span class="carousel-control-prev-icon"></span>
-          </a>
-                         
-          <a class="caro-controls carousel-control-next" href="#searchCaro" data-slide="next">
-               <span class="carousel-control-next-icon"></span>
-          </a>
-          </div>    
      </div>
-     
+
 </div>
 
-<div class="container">
 {{!-- Survey/search --}}
-     <button class="btn btn-primary" id="surveyBtn" taken="false">Submit Survey</button>
+<div class="container">
+     <h5 class="text-center py-5">Please fill out the form below to find your perfect pet match</h5>
+     <form>
+          <div class="form-row my-2">
+               <div class="col-md-6">
+                    <label for="petType">Pet Type</label>
+                    <select class="custom-select custom-select-sm mb-2" id="petType">
+                         <option selected value=""></option>
+                         <option value="dog">Dog</option>
+                         <option value="cat">Cat</option>
+                         <option value="bird">Bird</option>
+                         <option value="scale">Scale, Fins, and Others</option>
+                    </select>
+               </div>
+          </div>
+          <!--     <div class="col-md-6">
+                    <label for="userLastName">Last Name</label>
+                    <input type="text" class="form-control" id="userLastName">
+               </div>
+          </div>
+          <div class="form-row my-2">
+               <div class="col-md-6">
+                    <label for="userName">User Name</label>
+                    <input type="text" class="form-control" id="userName">
+               </div>
+               <div class="col-md-6">
+                    <br>
+                    <p>You will use your user name to log in</p>
+               </div>
+          </div>
+          <div class="form-row my-2">
+               <div class="form-group col-md-6">
+                    <label for="userEmail">Email</label>
+                    <input type="email" class="form-control" id="userEmail">
+               </div>
+               <div class="form-group col-md-6">
+                    <label for="userZip">Zip</label>
+                    <input type="text" class="form-control" id="userZip">
+               </div>
+          </div>
+          <div class="form-row my-2">
+               <div class="form-group col-md-6">
+                    <label for="userPassword">Password</label>
+                    <input type="password" class="form-control" id="UserPassword">
+               </div>
+          </div>-->
+     </form>
+     <button class="btn btn-primary" id="searchBtn" taken="false">Submit Search</button>
 </div>
 
 
