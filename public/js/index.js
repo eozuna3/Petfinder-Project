@@ -25,14 +25,15 @@ var API = {
       });
   },
   searchPets: function () {
-    var params = "?type=dog&size=small&coat=long&location=texas";
+    var params = "?type=dog&size=small&coat=long&location=texas";  //currently not used
+    var query = { type: "dog", size: "small", coat: "long", location: "texas" };
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "GET",
-      url: "api/searchPets" + params
-      // data: JSON.stringify(example)
+      url: "api/searchPets",
+      data: JSON.stringify(query)
     })
       .then(function (petsFound) {
         // console.log("petTypes: ", petsFound);

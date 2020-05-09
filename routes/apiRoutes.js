@@ -89,7 +89,7 @@ module.exports = function (app) {
   app.get("/api/searchPets", function (req, res) {
     // console.log("searchPets route found");
     // console.log("process.env.PetToken: ", process.env.PETFINDER_ACCESS_TOKEN);
-    console.log("req.params", req.params);
+    console.log("params", req.query);
 
     axios({
       headers: {
@@ -98,7 +98,7 @@ module.exports = function (app) {
       },
       method: "GET",
       url: "https://api.petfinder.com/v2/animals",
-      params: req.params
+      params: req.query
     })
       .then(function (searchPetsResponse) {
         // console.log(searchPetsResponse);
