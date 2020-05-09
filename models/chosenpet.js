@@ -1,12 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
-    var ChosenPet = sequelize.define("chosenpet", {
+    var ChosenPet = sequelize.define("ChosenPet", {
         petId: { type: DataTypes.INTEGER, allowNull: false },
         customerId: { type: DataTypes.INTEGER, allowNull: false }
     }
     );
-    return ChosenPet;
-};
-
     // ChosenPet.associate = function (models) {
     //     // We're saying that a Burger should belong to an Author
     //     // A Burger can't be created without an Author due to the foreign key constraint
@@ -18,5 +15,8 @@ module.exports = function (sequelize, DataTypes) {
     //         targetKey: "id"
     //     });
     // };
+    return ChosenPet;
+};
+
 
 

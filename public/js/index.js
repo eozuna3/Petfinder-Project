@@ -1,41 +1,45 @@
 /* eslint-disable indent */
 // Get references to page elements
 
-// const e = require("express");
-$(function() {
-  var $petFoundList = $("#petFound-list");
+var $petFoundList = $("#petFound-list");
 
-  // *** Added by SB for Friendly Neighborhood Pet Finder
-  var petTypesObject; //global object with petfinder type object for search
-  var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
-  var $searchPetsBtn = $("#searchPets");
-  var $loginBtn = $("#login");
-  
+// *** Added by SB for Friendly Neighborhood Pet Finder
+var petTypesObject;     //global object with petfinder type object for search
+var $loadPetTypesBtn = $("#loadPetTypes");    // button to load type object from petfinder
+var $searchPetsBtn = $("#searchPets");
+var $loginBtn = $("#login");
 
-  // The API object contains methods for each kind of request we'll make
-  var API = {
-    loadPetTypes: function() {
-      return $.ajax({
-        type: "GET",
-        url: "api/loadPetTypes/"
+// The API object contains methods for each kind of request we'll make
+var API = {
+  loadPetTypes: function () {
+    return $.ajax({
+      type: "GET",
+      url: "api/loadPetTypes/"
+    })
+      .then(function (petTypes) {
+        console.log("petTypes: ", petTypes);
+        petTypesObject = petTypes;
       })
-        .then(function(petTypes) {
-          console.log("petTypes: ", petTypes);
-          petTypesObject = petTypes;
-        })
-        .catch(function(err) {
-          console.log("error getting types from PetFinder: ", err);
-        });
-    },
-    searchPets: function() {
-      var params = "?type=dog&size=small&coat=long&location=texas";
-      return $.ajax({
-        headers: {
-          "Content-Type": "application/json"
-        },
-        type: "GET",
-        url: "api/searchPets/" + params
-        // data: JSON.stringify(example)
+      .catch(function (err) {
+        console.log("error getting types from PetFinder: ", err);
+      });
+  },
+  searchPets: function () {
+    var params = "?type=dog&size=small&coat=long&location=texas";  //currently not used
+    var query = { type: "dog", size: "small", coat: "long", location: "texas" };
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "GET",
+      url: "api/searchPets",
+      data: JSON.stringify(query)
+    })
+      .then(function (petsFound) {
+        // console.log("petTypes: ", petsFound);
+        petsFoundObject = petsFound;    // assign response object to global
+        // console.log(petsFoundObject);
+        // location.reload();
       })
         .then(function(petsFound) {
           // console.log("petTypes: ", petsFound);
@@ -86,6 +90,27 @@ $(function() {
 
       return $li;
     });
+  }
+};
+
+
+// ** ADDED BY SB
+// displayPetsFound gets displays pets found in PetFinder and repopulates the list
+// uses global petsFoundObject to populate table
+var displayPetsFound = function () {
+  var testArray = petsFoundObject.petsFound;
+  console.log("testArray", testArray);
+  var $pets = testArray.map(function (val) {
+    var $a = $("<a target='_blank'>")
+      .text(val.name)
+      .attr("href", val.url);
+
+    var $li = $("<li>")
+      .attr({
+        class: "list-group-item",
+        "data-id": val.id
+      })
+      .append($a);
 
     $petFoundList.empty();
     $petFoundList.append($pets);
