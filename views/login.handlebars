@@ -1,38 +1,80 @@
-<div class="container-fluid">
-     <div class="row">
-          <div class="col-sm-12 col-md-3 col-lg-4"></div>
-          <div class="col-sm-12 col-md-6 col-lg-4">
-               <form class="border border-secondary rounded p-5 mt-5">
-                    <h2 class="text-center pb-3">Login In</h2>
-                    <div class="form-group">
-                         <label for="userName">User Name</label>
-                         <input type="text" class="form-control" id="userName" placeholder="User Name">
-                    </div>
-                    <div class="form-group">
-                         <label for="userPassword">Password</label>
-                         <input type="password" class="form-control" id="userPassword" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" id="loginSubmitBtn">Submit</button>
-               </form>
+<nav class="navbar navbar-light bg-light py-3">
+     <a class="navbar-brand">Your Friendly Neighborhood Pet Adoption</a>
+     <form class="form-inline">
+          <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="signUpBtn" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+          <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="logInBtn" data-toggle="modal" data-target="#logInModal">Log In</button>
+     </form>
+</nav>
+
+<div class="modal fade" id="logInModal">
+     <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+               <div class="modal-body">
+                    <form>
+                         <h2 class="text-center pb-3">Login In</h2>
+                         <div class="form-group">
+                              <label for="userName" style="font-weight: bold;">User Name</label>
+                              <input type="text" class="form-control" id="userName">
+                         </div>
+                         <div class="form-group">
+                              <label for="userPassword" style="font-weight: bold;">Password</label>
+                              <input type="password" class="form-control" id="userPassword">
+                         </div>
+                         <button type="submit" class="btn btn-primary btn-block rounded" id="logInSubmitBtn" data-dismiss="modal">Log In</button>
+                    </form>
+               </div>
           </div>
-          <div class="col-sm-12 col-md-3 col-lg-4"></div>
      </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog">
-     <div class="modal-dialog" role="document">
+<div class="modal fade" id="signUpModal">
+     <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-               <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                    </button>
-               </div>
                <div class="modal-body">
-               </div>
-               <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <h2 class="text-center py-3">Sign Up</h2>
+                    <form>
+                         <div class="form-row my-2">
+                              <div class="col-md-6">
+                                   <label for="userFirstName">First Name</label>
+                                   <input type="text" class="form-control" id="userFirstName">
+                              </div>
+                              <div class="col-md-6">
+                                   <label for="userLastName">Last Name</label>
+                                   <input type="text" class="form-control" id="userLastName">
+                              </div>
+                         </div>
+                         <div class="form-row my-2">
+                              <div class="col-md-6">
+                                   <label for="userName">User Name</label>
+                                   <input type="text" class="form-control" id="userName">
+                              </div>
+                              <div class="col-md-6">
+                                   <br>
+                                   <p>You will use your user name to log in</p>
+                              </div>
+                         </div>
+                         <div class="form-row my-2">
+                              <div class="form-group col-md-6">
+                                   <label for="userEmail">Email</label>
+                                   <input type="email" class="form-control" id="userEmail">
+                              </div>
+                              <div class="form-group col-md-6">
+                                   <label for="userZip">Zip Code</label>
+                                   <input type="text" class="form-control" id="userZip">
+                              </div>
+                         </div>
+                         <div class="form-row my-2">
+                              <div class="form-group col-md-6">
+                                   <label for="userPassword">Password</label>
+                                   <input type="password" class="form-control" id="UserPassword">
+                              </div>
+                         </div>
+                         <button type="submit" class="btn btn-primary" id="signUpSubmitBtn" data-dismiss="modal">Sign Up</button>
+                    </form>
                </div>
           </div>
      </div>
 </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
