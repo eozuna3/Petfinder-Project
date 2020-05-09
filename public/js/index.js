@@ -162,6 +162,7 @@ var dummyArray = [
   "https://images.unsplash.com/photo-1445820200644-69f87d946277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
 ];
 
+addCards();
 
 function addCards() {
   if (!searchTaken) {
@@ -212,11 +213,11 @@ function addIndicators() {
 
     }
     $(".carousel-indicators").append(listItem);
+  }
+}
 
-addCards();
 
 $("#searchBtn").on("click", function () {
-
   if ($(this).attr("taken") === "false") {
     $("#header-container").hide();
     searchTaken = true;
@@ -224,9 +225,7 @@ $("#searchBtn").on("click", function () {
     console.log($(this));
     addCards();
   }
-
   handleLoadPetTypesBtnClick();
-
 });
 
 //  **ADDED BY EO

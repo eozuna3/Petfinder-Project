@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
         name: DataTypes.STRING,
         password: DataTypes.STRING,
         email: DataTypes.STRING,
-        zipcode: DataTypes.INTEGER,
+        // zipcode: DataTypes.INTEGER,
     });
     // Customer.associate = function (models) {
     //     // We're saying that a chosenPet should belong to Customer
