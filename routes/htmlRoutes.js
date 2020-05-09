@@ -48,6 +48,10 @@ module.exports = function(app) {
   });
 
   app.get("/homepage", function(req, res) {
+    /* Select all on from database
+        put it inside handlebar object
+        place handlebar object as second arguement
+    */
     res.render("homepage");
   });
 
