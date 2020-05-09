@@ -4,30 +4,35 @@
 var $petFoundList = $("#petFound-list");
 
 // *** Added by SB for Friendly Neighborhood Pet Finder
-var petTypesObject;     //global object with petfinder type object for search
-var $loadPetTypesBtn = $("#loadPetTypes");    // button to load type object from petfinder
+var petTypesObject; //global object with petfinder type object for search
+var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
 var $searchPetsBtn = $("#searchPets");
 var $loginBtn = $("#login");
 var petsFoundObject;
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  loadPetTypes: function () {
+  loadPetTypes: function() {
     return $.ajax({
       type: "GET",
       url: "api/loadPetTypes/"
     })
-      .then(function (petTypes) {
+      .then(function(petTypes) {
         console.log("petTypes: ", petTypes);
         petTypesObject = petTypes;
       })
-      .catch(function (err) {
+      .catch(function(err) {
         console.log("error getting types from PetFinder: ", err);
       });
   },
-  searchPets: function () {
-    var params = "?type=dog&size=small&coat=long&location=texas";  //currently not used
-    var query = { type: "dog", size: "small", coat: "long", location: "texas" };
+  searchPets: function() {
+    var params = "?type=dog&size=small&coat=long&location=texas"; //currently not used
+    var query = {
+      type: "dog",
+      size: "small",
+      coat: "long",
+      location: "texas"
+    };
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -36,7 +41,7 @@ var API = {
       url: "api/searchPets",
       data: JSON.stringify(query)
     })
-      .then(function (petsFound) {
+      .then(function(petsFound) {
         // console.log("petTypes: ", petsFound);
         petsFoundObject = petsFound;
         console.log(petsFoundObject);
@@ -57,6 +62,7 @@ var API = {
       data: JSON.stringify(bodyObj)
     });
   }
+
 };
 
 
@@ -68,6 +74,7 @@ var displayPetsFound = function () {
   var petsArray = petsFoundObject.petsFound;
   console.log("petsArray", petsArray);
   var $pets = petsArray.map(function (val) {
+
     var $a = $("<a target='_blank'>")
       .text(val.name)
       .attr("href", val.url);
@@ -79,9 +86,10 @@ var displayPetsFound = function () {
       })
       .append($a);
 
+
     var $button = $("<button>")
       .addClass("btn btn-danger float-right delete")
-      .text("ｘ");
+      .text("Choose");
 
     $li.append($button);
 
@@ -154,6 +162,7 @@ var dummyArray = [
   "https://images.unsplash.com/photo-1445820200644-69f87d946277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
 ];
 
+
 function addCards() {
   if (!searchTaken) {
     $("#carousel-container").hide();
@@ -200,14 +209,14 @@ function addIndicators() {
       var listItem = $("<li>")
         .attr("data-target", "#demo")
         .attr("data-slide-to", i);
+
     }
     $(".carousel-indicators").append(listItem);
-  }
-}
 
 addCards();
 
 $("#searchBtn").on("click", function () {
+
   if ($(this).attr("taken") === "false") {
     $("#header-container").hide();
     searchTaken = true;
@@ -215,25 +224,30 @@ $("#searchBtn").on("click", function () {
     console.log($(this));
     addCards();
   }
+
+  handleLoadPetTypesBtnClick();
+
 });
 
+//  **ADDED BY EO
 // Navbar button onclick functions
-$("#logOutBtn").on("click", function () {
+
+$("#logOutBtn").on("click", function() {
   window.location.href = "/login";
 });
 
-$("#searchPageBtn").on("click", function () {
+$("#searchPageBtn").on("click", function() {
   window.location.href = "/search";
 });
 
-$("#signUpSubmitBtn").on("click", function () {
+$("#signUpSubmitBtn").on("click", function() {
   window.location.href = "/homepage";
 });
 
-$("#logInSubmitBtn").on("click", function () {
+$("#logInSubmitBtn").on("click", function() {
   window.location.href = "/homepage";
 });
 
-$("#homePageBtn").on("click", function () {
+$("#homePageBtn").on("click", function() {
   window.location.href = "/homepage";
 });

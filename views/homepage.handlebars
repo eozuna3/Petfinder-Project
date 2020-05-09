@@ -5,5 +5,34 @@
           <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="logOutBtn">Log Out</button>
      </form>
 </nav>
+
+<div class="container-fluid">
+     <div class="row my-3">
+          <div class="col-md-12 text-center">
+               <h2>Welcome --Place Holder For User Name--</h2>
+          </div>
+     </div>
+</div>
+
+<div class="container-fluid">
+     <h3>Pets Found:</h3>
+     <ul id="petFound-list" class="list-group">
+          {{#each petsFound}}
+          <li data-id="{{this.id}}" class="list-group-item">
+               <a href="example/{{this.id}}">{{this.name}}</a>
+               <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+     </ul>
+</div>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+<script type="text/javascript">
+     $(window).on("load", function () {
+          alert("page has loaded");
+          API.searchPets().then(function () {
+               displayPetsFound();
+          });
+     });
+</script>
