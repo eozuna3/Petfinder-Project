@@ -2,11 +2,11 @@
      <a class="navbar-brand">Your Friendly Neighborhood Pet Adoption</a>
      <form class="form-inline">
           <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="signUpBtn" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
-          <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="logInBtn" data-toggle="modal" data-target="#loginModal">Log In</button>
+          <button class="btn btn-outline-success m-2 my-sm-0" type="button" id="logInBtn" data-toggle="modal" data-target="#logInModal">Log In</button>
      </form>
 </nav>
 
-<div class="modal fade" id="loginModal">
+<div class="modal fade" id="logInModal">
      <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
                <div class="modal-body">
@@ -20,7 +20,7 @@
                               <label for="userPassword" style="font-weight: bold;">Password</label>
                               <input type="password" class="form-control" id="userPassword">
                          </div>
-                         <button type="submit" class="btn btn-primary btn-block rounded" id="loginSubmitBtn" data-dismiss="modal">Submit</button>
+                         <button type="submit" class="btn btn-primary btn-block rounded" id="logInSubmitBtn" data-dismiss="modal">Log In</button>
                     </form>
                </div>
           </div>
@@ -31,7 +31,7 @@
      <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
                <div class="modal-body">
-                    <h2>Sign Up</h2>
+                    <h2 class="text-center py-3">Sign Up</h2>
                     <form>
                          <div class="form-row my-2">
                               <div class="col-md-6">
@@ -69,9 +69,12 @@
                                    <input type="password" class="form-control" id="UserPassword">
                               </div>
                          </div>
-                         <button type="submit" class="btn btn-primary" id="signInBtn" data-dismiss="modal">Sign in</button>
+                         <button type="submit" class="btn btn-primary" id="signUpSubmitBtn" data-dismiss="modal">Sign Up</button>
                     </form>
                </div>
           </div>
      </div>
 </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

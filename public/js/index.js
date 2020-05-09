@@ -10,6 +10,7 @@ $(function() {
   var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
   var $searchPetsBtn = $("#searchPets");
   var $loginBtn = $("#login");
+  
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -211,4 +212,25 @@ $(function() {
       addCards();
     }
   });
+});
+
+// Navbar button onclick functions
+$("#logOutBtn").on("click", function(){
+      window.location.href="/login";
+});
+
+$("#searchPageBtn").on("click", function(){
+      window.location.href="/search";
+});
+
+$("#signUpSubmitBtn").on("click", function(){
+      window.location.href="/homepage";
+});
+
+$("#logInSubmitBtn").on("click", function(){
+      window.location.href="/homepage";
+});
+
+$("#homePageBtn").on("click", function(){
+      window.location.href="/homepage";
 });
