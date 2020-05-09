@@ -150,10 +150,6 @@ $petFoundList.on("click", ".choose", handleChooseBtnClick);
 // $loginBtn.on("click", handleFormLogin);
 
 // ADDED BY BD
-// var dummyArray = [
-//   "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-// ];
-
 var searchTaken = false;
 
 var dummyArray = [
@@ -162,26 +158,23 @@ var dummyArray = [
   "https://images.unsplash.com/photo-1445820200644-69f87d946277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
 ];
 
-addCards();
-
 function addCards() {
   if (!searchTaken) {
     $("#carousel-container").hide();
+    $("a .caro-controls").hide();
+
   } else {
     addIndicators();
     $("#carousel-container").show();
-    $(".caro-controls").show();
+    $("a .caro-controls").show();
     for (var i = 0; i < dummyArray.length; i++) {
       // if the survey has been taken and there are results, add images to cards in the carousel
-      console.log(i);
       var newDiv = $("<div>");
       if (i === 0) {
         // first item in the carousel is 'active'
         newDiv.attr("class", "carousel-item active card");
-        console.log("we've gotten to l164");
       } else {
         newDiv.attr("class", "carousel-item card");
-        console.log("we've gotten to l167");
       }
       var image = $("<img>");
       image
@@ -199,6 +192,7 @@ function addCards() {
   }
 }
 
+
 function addIndicators() {
   for (var i = 0; i < dummyArray.length; i++) {
     if (i === 0) {
@@ -210,14 +204,13 @@ function addIndicators() {
       var listItem = $("<li>")
         .attr("data-target", "#demo")
         .attr("data-slide-to", i);
-
     }
     $(".carousel-indicators").append(listItem);
   }
 }
 
-
 $("#searchBtn").on("click", function () {
+  event.preventDefault();
   if ($(this).attr("taken") === "false") {
     $("#header-container").hide();
     searchTaken = true;
