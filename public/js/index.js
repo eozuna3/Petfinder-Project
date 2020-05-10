@@ -6,17 +6,26 @@
 var $petFoundList = $("#petFound-list");
 var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
 var $searchPetsBtn = $("#searchPets");
-var $loginBtn = $("#login");
 var $signUpSubmitBtn = $('#signUpSubmitBtn');
-var $loginSubmitBtn = $('#loginSubmitBtn');
+var $logInSubmitBtn = $('#loginSubmitBtn');
 
+// ADDED BY EO
+// Function
+/*var handleDeleteBtn = function(petId) {
+    $.ajax({
+      method: "DELETE",
+      url: "/api/posts/" + petId
+    })
+    .then(function() {
+      getPosts(postCategorySelect.val());
+    });
+}*/
 
 var petTypesObject; //global object with petfinder type object for search
 var petsFoundObject;
 
 // var API for Ajax API calls now located in indexApiCalls.js in this directory.  
 // ** Remember include: <script src="/js/indexApiCalls.js"></script> at bottom of .handleBars files
-//
 
 
 // ** ADDED BY SB
@@ -49,9 +58,6 @@ var displayPetsFound = function () {
   $petFoundList.empty();
   $petFoundList.append($pets);
 }
-
-
-
 
 // ADDED BY BD
 var searchTaken = false;
@@ -138,12 +144,12 @@ $("#searchPageBtn").on("click", function () {
   window.location.href = "/search";
 });
 
-$("#signUpSubmitBtn").on("click", function () {
+$signUpSubmitBtn.on("click", function () {
   handleSignUpSubmitBtnClick();
   window.location.href = "/homepage";
 });
 
-$("#logInSubmitBtn").on("click", function () {
+$logInSubmitBtn.on("click", function () {
   handleLoginSubmitBtnClick();
   window.location.href = "/homepage";
 });
@@ -158,4 +164,3 @@ $("#homePageBtn").on("click", function () {
 $loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
 $searchPetsBtn.on("click", handleSearchPetsBtnClick);
 $petFoundList.on("click", ".choose", handleChooseBtnClick);
-// $loginBtn.on("click", handleFormLogin);
