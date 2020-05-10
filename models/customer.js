@@ -8,7 +8,6 @@ module.exports = function (sequelize, DataTypes) {
         address: DataTypes.STRING
     });
 
-    //add to master
     // Customer.associate = function (models) {
     //     // We're saying that a chosenPet should belong to Customer
     //     Customer.hasMany(ChosenPet, {
