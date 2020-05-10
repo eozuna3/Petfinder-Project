@@ -25,6 +25,26 @@ module.exports = function (app) {
     });
   });
 
+  // Create a new customer
+  app.post("/api/signup", function (req, res) {
+    console.log("req.body", req.body);
+    db.Customer.create({
+      customerId: req.body.customerId     // need to add other keys to this object
+    }).then(function (dbSignup) {
+      res.json(dbSignup);
+    });
+  });
+
+  // Create a newly chosen pet
+  app.post("/api/login", function (req, res) {
+    console.log("req.body", req.body);
+    db.Customer.findOne({
+      customerId: req.body.customerId     // need to add other keys to this object
+    }).then(function (dbLogin) {
+      res.json(dbLogin);
+    });
+  });
+
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {

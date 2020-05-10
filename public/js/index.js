@@ -1,75 +1,28 @@
 /* eslint-disable indent */
 // Get references to page elements
 
-var $petFoundList = $("#petFound-list");
 
-// *** Added by SB for Friendly Neighborhood Pet Finder
-var petTypesObject; //global object with petfinder type object for search
+// *** Added by SB, selectors to onClick event handlers at bottom of this file: index.js
+var $petFoundList = $("#petFound-list");
 var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
 var $searchPetsBtn = $("#searchPets");
 var $loginBtn = $("#login");
+var $signUpSubmitBtn = $('#signUpSubmitBtn');
+var $loginSubmitBtn = $('#loginSubmitBtn');
+
+
+var petTypesObject; //global object with petfinder type object for search
 var petsFoundObject;
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  loadPetTypes: function() {
-    return $.ajax({
-      type: "GET",
-      url: "api/loadPetTypes/"
-    })
-      .then(function(petTypes) {
-        console.log("petTypes: ", petTypes);
-        petTypesObject = petTypes;
-      })
-      .catch(function(err) {
-        console.log("error getting types from PetFinder: ", err);
-      });
-  },
-  searchPets: function() {
-    var params = "?type=dog&size=small&coat=long&location=texas"; //currently not used
-    var query = {
-      type: "dog",
-      size: "small",
-      coat: "long",
-      location: "texas"
-    };
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "GET",
-      url: "api/searchPets",
-      data: JSON.stringify(query)
-    })
-      .then(function(petsFound) {
-        // console.log("petTypes: ", petsFound);
-        petsFoundObject = petsFound;
-        console.log(petsFoundObject);
-        // location.reload();
-      })
-      .catch(function (err) {
-        console.log("error getting types from PetFinder: ", err);
-      });
-  },
-  choosePet: function (petId, customerId) {
-    var bodyObj = { petId: petId, customerId: customerId };
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/choosePet",
-      data: JSON.stringify(bodyObj)
-    });
-  }
-
-};
-
+// var API for Ajax API calls now located in indexApiCalls.js in this directory.  
+// ** Remember include: <script src="/js/indexApiCalls.js"></script> at bottom of .handleBars files
+//
 
 
 // ** ADDED BY SB
 // displayPetsFound gets displays pets found in PetFinder and repopulates the list
 // uses global petsFoundObject to populate table
+// assumes API.loadPetTypes() has run and process.env.PETFINDER_ACCESS_TOKEN is valid
 var displayPetsFound = function () {
   var petsArray = petsFoundObject.petsFound;
   console.log("petsArray", petsArray);
@@ -86,68 +39,19 @@ var displayPetsFound = function () {
       })
       .append($a);
 
-
     var $button = $("<button>")
       .addClass("btn btn-danger float-right delete")
       .text("Choose");
 
     $li.append($button);
-
     return $li;
   });
-
-
-
   $petFoundList.empty();
   $petFoundList.append($pets);
-  // });
 }
 
 
-// ** ADDED BY SB
-// handleLoadPetTypesBtnClick is called when loadPetTypes button is clicked
-// variable petTypes is loaded with PetFinder types object
-var handleLoadPetTypesBtnClick = function () {
-  console.log("loadTypes");
 
-  API.loadPetTypes().then(function () {
-    // refreshExamples();
-  });
-};
-
-// ** ADDED BY SB
-// handleSearchPetsBtnClick is called when loadSearch button is clicked
-// variable petsFound is loaded with PetFinder petsFound object
-var handleSearchPetsBtnClick = function (event) {
-  event.preventDefault();
-  console.log("loadSearchPets");
-
-  API.searchPets().then(function () {
-    displayPetsFound();
-    // refreshExamples();
-  });
-};
-
-// ** ADDED BY SB
-// handleChooseBtnClick is called when a pet's choose button is clicked
-// Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
-var handleChooseBtnClick = function () {
-  var idToChoose = $(this)
-    .parent()
-    .attr("data-id");
-  var customerId = 1;
-  API.choosePet(idToChoose, customerId).then(function () {
-    refreshExamples();
-  });
-};
-
-//
-// ** ADDED BY SB
-// Added event listeners for Friendly Neighborhood Pet Finder
-$loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
-$searchPetsBtn.on("click", handleSearchPetsBtnClick);
-$petFoundList.on("click", ".choose", handleChooseBtnClick);
-// $loginBtn.on("click", handleFormLogin);
 
 // ADDED BY BD
 var searchTaken = false;
@@ -221,25 +125,37 @@ $("#searchBtn").on("click", function () {
   handleLoadPetTypesBtnClick();
 });
 
+
+// ** On-click events, per convention all call handlers in indexOnClickHandlers.js
 //  **ADDED BY EO
 // Navbar button onclick functions
 
-$("#logOutBtn").on("click", function() {
+$("#logOutBtn").on("click", function () {
   window.location.href = "/login";
 });
 
-$("#searchPageBtn").on("click", function() {
+$("#searchPageBtn").on("click", function () {
   window.location.href = "/search";
 });
 
-$("#signUpSubmitBtn").on("click", function() {
+$("#signUpSubmitBtn").on("click", function () {
+  handleSignUpSubmitBtnClick();
   window.location.href = "/homepage";
 });
 
-$("#logInSubmitBtn").on("click", function() {
+$("#logInSubmitBtn").on("click", function () {
+  handleLoginSubmitBtnClick();
   window.location.href = "/homepage";
 });
 
-$("#homePageBtn").on("click", function() {
+$("#homePageBtn").on("click", function () {
   window.location.href = "/homepage";
 });
+
+//
+// ** ADDED BY SB
+// Added event listeners for Friendly Neighborhood Pet Finder
+$loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
+$searchPetsBtn.on("click", handleSearchPetsBtnClick);
+$petFoundList.on("click", ".choose", handleChooseBtnClick);
+// $loginBtn.on("click", handleFormLogin);
