@@ -50,8 +50,29 @@ var API = {
             url: "api/choosePet",
             data: JSON.stringify(bodyObj)
         });
+    },
+    signup: function (customerObject) {
+        var bodyObj = customerObject;
+        return $.ajax({
+            headers: {
+                "Content-Type": "application/json"
+            },
+            type: "POST",
+            url: "api/signup",
+            data: JSON.stringify(bodyObj)
+        });
+    },
+    login: function (customerObject) {
+        var bodyObj = customerObject;
+        return $.ajax({
+            headers: {
+                "Content-Type": "application/json"
+            },
+            type: "POST",
+            url: "api/login",
+            data: JSON.stringify(bodyObj)
+        });
     }
-
 };
 //     return API;
 // }

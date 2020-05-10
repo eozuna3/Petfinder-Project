@@ -125,8 +125,26 @@ module.exports = function (app) {
         var petsFoundObject = {
           petsFound: searchPetsResponse.data.animals
         };
-        // res.render("index", JSON.parse(JSON.stringify(petsFoundObject)));
-        //JSON.parse(JSON.stringify(petsFoundObject))
+        /*var petsFoundArray = searchPetsResponse.data.animals;
+        console.log("\n---------------------\n");
+        console.log("!!!THIS IS THE JSON RETURNED AFTER PETFINDER API CALL:\n");
+       
+        //  ADDED BY EO
+        // Code that populates the chosenpets database for testing this for loop can then be used later in the index.js to populate caro
+        for (let index = 8; index < 11; index++) {
+          console.log(petsFoundArray[index].id);
+          console.log(petsFoundArray[index].name);
+          console.log(petsFoundArray[index].url);
+          console.log(petsFoundArray[index].description);
+          db.ChosenPet.create({
+            petId: petsFoundArray[index].id,
+            customerId: 1,
+            petName: petsFoundArray[index].name,
+            url: petsFoundArray[index].url,
+            description: petsFoundArray[index].description
+          });
+          console.log("\n---------------------\n");
+        }*/
         res.json(petsFoundObject).end();
       })
       .catch(function (error) {

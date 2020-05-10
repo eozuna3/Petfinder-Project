@@ -48,11 +48,16 @@ module.exports = function(app) {
   });
 
   app.get("/homepage", function(req, res) {
-    /* Select all on from database
-        put it inside handlebar object
-        place handlebar object as second arguement
-    */
-    res.render("homepage");
+    db.ChosenPet.findAll({
+      where: {
+        //This will end up being the unique user ID
+        customerId: 3
+      }
+    }).then(function(dbChosenPets) {
+      res.render("homepage", {
+        ChosenPets: dbChosenPets
+      });
+    });
   });
 
   // Render 404 page for any unmatched routes

@@ -16,23 +16,25 @@
 
 <div class="container-fluid">
      <h3>Pets Found:</h3>
-     <ul id="petFound-list" class="list-group">
-          {{#each petsFound}}
-          <li data-id="{{this.id}}" class="list-group-item">
-               <a href="example/{{this.id}}">{{this.name}}</a>
-               <button class="btn btn-danger float-right delete">ｘ</button>
+     <ul id="chosenPetList" class="list-group">
+          {{#each ChosenPets}}
+          <li data-id="{{dataValues.id}}" class="list-group-item">
+               <a href="{{dataValues.url}}" target="_blank">{{dataValues.petName}}</a>
+               <button data-id="{{dataValues.id}}" class="btn btn-danger float-right delete">Delete</button>
           </li>
           {{/each}}
      </ul>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/indexApiCalls.js"></script>
+<script src="/js/indexOnClickHandlers.js"></script>
 <script src="/js/index.js"></script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
      $(window).on("load", function () {
           alert("page has loaded");
           API.searchPets().then(function () {
                displayPetsFound();
           });
      });
-</script>
+</script>-->
