@@ -5,8 +5,8 @@ var axios = require("axios");
 module.exports = function(app) {
   // Load index page
 
-  app.get("/", function (req, res) {
-    db.Customer.findAll({}).then(function (dbExamples) {
+  app.get("/", function(req, res) {
+    db.Customer.findAll({}).then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
         examples: dbExamples
@@ -15,17 +15,17 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/petRecord/:id", function (req, res) {
+  app.get("/petRecord/:id", function(req, res) {
     axios({
       headers: {
         Authorization: "Bearer " + process.env.PETFINDER_ACCESS_TOKEN
         // Authorization: "Bearer " + globalPetFinderToken
       },
       method: "GET",
-      url: `https://api.petfinder.com/v2/animals/${req.params.id}`,
+      url: "https://api.petfinder.com/v2/animals/${req.params.id}",
       params: req.params
     })
-      .then(function (searchPetsResponse) {
+      .then(function(searchPetsResponse) {
         // console.log(searchPetsResponse);
         var petsFoundObject = {
           petsFound: searchPetsResponse.data.animals
@@ -34,7 +34,7 @@ module.exports = function(app) {
         //JSON.parse(JSON.stringify(petsFoundObject))
         res.json(petsFoundObject).end();
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log("errorToken: \n", error.response);
       });
   });

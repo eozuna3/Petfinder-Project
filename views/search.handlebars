@@ -41,55 +41,77 @@
 </div>
 
 {{!-- Survey/search --}}
-<div class="container">
+<div class="container my-3 border border-secondary rounded-lg">
      <h5 class="text-center py-5">Please fill out the form below to find your perfect pet match</h5>
-     <form>
+     <form class="pb-3">
           <div class="form-row my-2">
                <div class="col-md-6">
-                    <label for="petType">Pet Type</label>
-                    <select class="custom-select custom-select-sm mb-2" id="petType">
+                    <label for="type">Pet Type</label>
+                    <select class="custom-select custom-select-sm mb-2" id="type">
                          <option selected value=""></option>
                          <option value="dog">Dog</option>
                          <option value="cat">Cat</option>
+                         <option value="small-furry">Small-Furry</option>
                          <option value="bird">Bird</option>
-                         <option value="scale">Scale, Fins, and Others</option>
+                         <option value="scales-fins-other">Scale, Fins, and Others</option>
+                         <option value="barnyard">Barnyard</option>
+                         <option value="rabbit">Rabbit</option>
+                         <option value="horse">Horse</option>
+                    </select>
+               </div>
+               <div class="col-md-6">
+                    <label for="breed">Breed Type</label>
+                    <input type="text" class="form-control" id="breed" placeholder="pug, parrot, etc">
+               </div>
+          </div>
+               
+          <div class="form-row my-2">
+               <div class="col-md-6">
+                    <label for="size">Pet Size</label>
+                    <select class="custom-select custom-select-sm mb-2" id="size">
+                         <option selected value=""></option>
+                         <option value="small">Small</option>
+                         <option value="medium">Medium</option>
+                         <option value="large">Large</option>
+                         <option value="extra-large">Bird</option>
+                    </select>
+               </div>
+               <div class="col-md-6">
+                    <label for="gender">Pet Gender</label>
+                    <select class="custom-select custom-select-sm mb-2" id="gender">
+                         <option selected value=""></option>
+                         <option value="male">Male</option>
+                         <option value="female">Female</option>
+                         <option value="unknown">Unknown</option>
                     </select>
                </div>
           </div>
-          <!--     <div class="col-md-6">
-                    <label for="userLastName">Last Name</label>
-                    <input type="text" class="form-control" id="userLastName">
-               </div>
-          </div>
-          <div class="form-row my-2">
-               <div class="col-md-6">
-                    <label for="userName">User Name</label>
-                    <input type="text" class="form-control" id="userName">
-               </div>
-               <div class="col-md-6">
-                    <br>
-                    <p>You will use your user name to log in</p>
-               </div>
-          </div>
           <div class="form-row my-2">
                <div class="form-group col-md-6">
-                    <label for="userEmail">Email</label>
-                    <input type="email" class="form-control" id="userEmail">
+                    <label for="age">Pet Age</label>
+                    <select class="custom-select custom-select-sm mb-2" id="age">
+                         <option selected value=""></option>
+                         <option value="baby">Baby</option>
+                         <option value="young">Young</option>
+                         <option value="adult">Adult</option>
+                         <option value="senior">Senior</option>
+                    </select>
                </div>
                <div class="form-group col-md-6">
-                    <label for="userZip">Zip</label>
-                    <input type="text" class="form-control" id="userZip">
+                    <label for="coat">Type of Coat</label>
+                    <select class="custom-select custom-select-sm mb-2" id="coat">
+                         <option selected value=""></option>
+                         <option value="short">Short</option>
+                         <option value="medium">Medium</option>
+                         <option value="long">Long</option>
+                         <option value="wire">Wire</option>
+                         <option value="hairless">Hairless</option>
+                         <option value="curly">Curly</option>
+                    </select>
                </div>
           </div>
-          <div class="form-row my-2">
-               <div class="form-group col-md-6">
-                    <label for="userPassword">Password</label>
-                    <input type="password" class="form-control" id="UserPassword">
-               </div>
-          </div>-->
           <button class="btn btn-primary" id="searchBtn" taken="false">Submit Search</button>
      </form>
-     <!--<button class="btn btn-primary" id="searchBtn" taken="false">Submit Search</button>-->
 </div>
 
 
