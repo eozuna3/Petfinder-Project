@@ -40,9 +40,9 @@ var handleSearchSubmitBtnClick = function (event) {
             age: $("#age").val(),
             coat: $("#coat").val()
         };
-        console.log(query);
+        // console.log(query);
         API.searchPets(query).then(function () {
-            console.log("petsFoundObject: ", petsFoundObject);  // petsFoundObject is a global set in API.searchPets, 
+            // console.log("petsFoundObject: ", petsFoundObject);  // petsFoundObject is a global set in API.searchPets, 
             // but could be returned from API as well.
             searchTaken = true;
             addCards();
