@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
+
 // The API object contains methods for each kind of request we'll make
 // module.exports = function () {
 var API = {

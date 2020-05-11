@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
+
 module.exports = function (sequelize, DataTypes) {
     var ChosenPet = sequelize.define("ChosenPet", {
         petId: { 

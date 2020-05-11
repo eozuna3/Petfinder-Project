@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable indent */
 // Get references to page elements
 
@@ -7,7 +8,7 @@ var $petFoundList = $("#petFound-list");
 var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
 var $searchPetsBtn = $("#searchPets");
 var $signUpSubmitBtn = $('#signUpSubmitBtn');
-var $logInSubmitBtn = $('#loginSubmitBtn');
+var $logInSubmitBtn = $('#logInSubmitBtn');
 var $searchSubmitBtn = $('#searchSubmitBtn');
 
 // ADDED BY EO
