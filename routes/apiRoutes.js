@@ -72,7 +72,7 @@ module.exports = function (app) {
     })
       .then(function (petFinderTokenResponse) {
         process.env.PETFINDER_ACCESS_TOKEN = petFinderTokenResponse.data.access_token;
-
+        console.log(process.env.PETFINDER_ACCESS_TOKEN);
         axios({
           headers: {
             Authorization: "Bearer " + process.env.PETFINDER_ACCESS_TOKEN
@@ -105,20 +105,20 @@ module.exports = function (app) {
   });
 
 
-  // get matching pets
+  // get matching pets from petFinder, called from indexApiCalls.js API.searchPets
   app.get("/api/searchPets", function (req, res) {
-    // console.log("searchPets route found");
-    // console.log("process.env.PetToken: ", process.env.PETFINDER_ACCESS_TOKEN);
     console.log("params", req.query);
-
+    var queryString = `?type=${req.query.type}&coat=${req.query.coat}&size=${req.query.size}` +
+      `&breed=${req.query.breed}&age=${req.query.age}&gender=${req.query.gender}`;
+    console.log("queryString", queryString);
     axios({
       headers: {
         Authorization: "Bearer " + process.env.PETFINDER_ACCESS_TOKEN
         // Authorization: "Bearer " + globalPetFinderToken
       },
       method: "GET",
-      url: "https://api.petfinder.com/v2/animals",
-      params: req.query
+      url: "https://api.petfinder.com/v2/animals" + queryString,
+      // params: req.query
     })
       .then(function (searchPetsResponse) {
         // console.log(searchPetsResponse);
