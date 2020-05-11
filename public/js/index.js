@@ -7,9 +7,12 @@
 var $petFoundList = $("#petFound-list");
 var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
 var $searchPetsBtn = $("#searchPets");
-var $signUpSubmitBtn = $('#signUpSubmitBtn');
-var $logInSubmitBtn = $('#logInSubmitBtn');
-var $searchSubmitBtn = $('#searchSubmitBtn');
+var $signUpSubmitBtn = $("#signUpSubmitBtn");
+var $logInSubmitBtn = $("#logInSubmitBtn");
+var $searchSubmitBtn = $("#searchSubmitBtn");
+var $logOutBtn = $("#logOutBtn");
+var $homePageBtn = $("#homePageBtn");
+var $searchPageBtn = $("#searchPageBtn");
 
 // ADDED BY EO
 // Function
@@ -148,17 +151,6 @@ function addIndicators() {
 
 // ** On-click events, per convention all call handlers in indexOnClickHandlers.js
 //  **ADDED BY EO
-// Navbar button onclick functions
-
-$("#logOutBtn").on("click", function () {
-  window.location.href = "/login";
-});
-
-$("#searchPageBtn").on("click", function () {
-  handleSearchPageBtnClick();
-  // window.location.href = "/search";
-});
-
 $signUpSubmitBtn.on("click", function () {
   handleSignUpSubmitBtnClick();
   window.location.href = "/homepage";
@@ -169,14 +161,12 @@ $logInSubmitBtn.on("click", function () {
   window.location.href = "/homepage";
 });
 
-$("#homePageBtn").on("click", function () {
-  window.location.href = "/homepage";
-});
-
-//
-// ** ADDED BY SB
+// ** ADDED BY SB AND EO
 // Added event listeners for Friendly Neighborhood Pet Finder
 $loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
 $searchPetsBtn.on("click", handleSearchPetsBtnClick);
 $petFoundList.on("click", ".choose", handleChooseBtnClick);
 $searchSubmitBtn.on("click", handleSearchSubmitBtnClick);
+$logOutBtn.on("click", handleLogOutBtnClick);
+$homePageBtn.on("click", handleHomePageBtnClick);
+$searchPageBtn.on("click", handleSearchPageBtnClick);

@@ -15,13 +15,7 @@ var handleLoadPetTypesBtnClick = function () {
 
 // ** brought in from index.js by SB to standardize all onClick event handlers in this file
 //  called from searchPageBtn onClick event, load petfinder.com token and pet types in petTypesObject, then load search page
-var handleSearchPageBtnClick = function (event) {
-    // event.preventDefault();
-    API.loadPetTypes().then(function (petTypesObject) {
-        window.location.href = "/search";
-        console.log("Going for token and petTypes object from petFinder: ", petTypesObject);
-    });
-}
+
 
 
 // ** brought in from index.js by SB to standardize all onClick event handlers in this file
@@ -108,4 +102,20 @@ var handleSignUpSubmitBtnClick = function () {
     API.signup(newCustomerObject).then(function () {
         console.log("API.signup success");
     });
+};
+
+var handleLogOutBtnClick = function () {
+  window.location.replace("/login");
+};
+
+var handleHomePageBtnClick = function () {
+    window.location.replace("/homepage");
+};
+
+var handleSearchPageBtnClick = function () {
+    // event.preventDefault();
+    /*API.loadPetTypes().then(function (petTypesObject) {
+        console.log("Going for token and petTypes object from petFinder: ", petTypesObject);
+    });*/
+    window.location.href = "/search";
 };
