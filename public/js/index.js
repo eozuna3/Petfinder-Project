@@ -109,7 +109,7 @@ function addCards() {
       var cardBody = $("<div>").attr("class", "card-body");
       var cardTitle = $("<h5>")
         .attr("class", "card-title")
-        .html(i);
+        .html(dummyArray[i].name);
       cardBody.append(cardTitle);
       newDiv.append(cardBody);
       $(".carousel-inner").append(newDiv);
