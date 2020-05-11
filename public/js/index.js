@@ -13,6 +13,7 @@ var $searchSubmitBtn = $("#searchSubmitBtn");
 var $logOutBtn = $("#logOutBtn");
 var $homePageBtn = $("#homePageBtn");
 var $searchPageBtn = $("#searchPageBtn");
+var $deleteChosenPetBtn = $(".deleteChosenPetBtn");
 
 // ADDED BY EO
 // Function
@@ -170,3 +171,6 @@ $searchSubmitBtn.on("click", handleSearchSubmitBtnClick);
 $logOutBtn.on("click", handleLogOutBtnClick);
 $homePageBtn.on("click", handleHomePageBtnClick);
 $searchPageBtn.on("click", handleSearchPageBtnClick);
+$deleteChosenPetBtn.on("click", function() {
+  handleDeleteChosenPetBtnClick($(this).data("id"));
+});

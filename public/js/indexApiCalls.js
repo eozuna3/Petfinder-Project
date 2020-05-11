@@ -68,6 +68,12 @@ var API = {
             url: "api/login",
             data: JSON.stringify(bodyObj)
         });
+    },
+    deletePet: function (Id){
+        return $.ajax({
+            method: "DELETE",
+            url: "/api/deletePet/" + Id
+        });
     }
 };
 //     return API;

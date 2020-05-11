@@ -180,6 +180,18 @@ app.post("/api/login", function (req, res) {
   });
 });
 
+//  Delete a chosen pet from the database
+app.delete("/api/deletePet/:id", function(req, res) {
+    db.ChosenPet.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbChosenPets) {
+        console.log("ChosenPet successfully deleted from database");
+        res.json(dbChosenPets);
+      })
+  });
 };
 
 

@@ -119,3 +119,11 @@ var handleSearchPageBtnClick = function () {
     });*/
     window.location.href = "/search";
 };
+
+var handleDeleteChosenPetBtnClick = function (petId){
+    console.log("Delete button for chosen pet# " + petId);
+    API.deletePet(petId).then(function(response) {
+        console.log(response);
+        window.location.replace("/homepage");
+      });
+};

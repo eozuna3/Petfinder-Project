@@ -20,7 +20,7 @@
           {{#each ChosenPets}}
           <li data-id="{{dataValues.id}}" class="list-group-item">
                <a href="{{dataValues.url}}" target="_blank">{{dataValues.petName}}</a>
-               <button data-id="{{dataValues.id}}" class="btn btn-danger float-right delete">Delete</button>
+               <button data-id="{{dataValues.id}}" class="btn btn-danger float-right deleteChosenPetBtn">Delete</button>
           </li>
           {{/each}}
      </ul>
