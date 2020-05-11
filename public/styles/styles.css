@@ -31,6 +31,10 @@ body {
     width: 60vw;
 }
 
+a.caro-controls {
+  display: none;
+}
+
 .searchResultImg {
   max-height: 40vw;
 }
