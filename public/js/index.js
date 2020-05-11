@@ -77,13 +77,11 @@ function addCards() {
   var dummyArray = petsFoundObject.petsFound;   // petsFoundObject is a global set in apiRoutes.js /searchPets route
   if (!searchTaken) {
     $("#carousel-container").hide();
-    $("a .caro-controls").hide();
-
   } else {
     addIndicators();
     $('#header-container').empty();
     $("#carousel-container").show();
-    $("a .caro-controls").show();
+    $("a.caro-controls").css("display", "flex");
     for (var i = 0; i < dummyArray.length; i++) {
       // if the survey has been taken and there are results, add images to cards in the carousel
       var newDiv = $("<div>");
