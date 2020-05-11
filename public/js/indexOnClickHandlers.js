@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
+
 // ** These are all called from onClick events at bottom of index.js
-
-
 
 // ** ADDED BY SB
 // handleLoadPetTypesBtnClick is called when loadPetTypes button is clicked or from searchSubmitBtnClick to start doing searches 

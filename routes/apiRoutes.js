@@ -131,14 +131,14 @@ module.exports = function (app) {
        
         //  ADDED BY EO
         // Code that populates the chosenpets database for testing this for loop can then be used later in the index.js to populate caro
-        for (let index = 8; index < 11; index++) {
+        for (let index = 0; index < 5; index++) {
           console.log(petsFoundArray[index].id);
           console.log(petsFoundArray[index].name);
           console.log(petsFoundArray[index].url);
           console.log(petsFoundArray[index].description);
           db.ChosenPet.create({
             petId: petsFoundArray[index].id,
-            customerId: 1,
+            customerId: 3,
             petName: petsFoundArray[index].name,
             url: petsFoundArray[index].url,
             description: petsFoundArray[index].description
