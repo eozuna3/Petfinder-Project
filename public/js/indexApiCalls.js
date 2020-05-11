@@ -14,21 +14,14 @@ var API = {
                 console.log("error getting types from PetFinder: ", err);
             });
     },
-    searchPets: function () {
-        var params = "?type=dog&size=small&coat=long&location=texas"; //currently not used
-        var query = {
-            type: "dog",
-            size: "small",
-            coat: "long",
-            location: "texas"
-        };
+    searchPets: function (query) {
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
             },
             type: "GET",
             url: "api/searchPets",
-            data: JSON.stringify(query)
+            data: query
         })
             .then(function (petsFound) {
                 // console.log("petTypes: ", petsFound);

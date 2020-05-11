@@ -8,6 +8,7 @@ var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from pe
 var $searchPetsBtn = $("#searchPets");
 var $signUpSubmitBtn = $('#signUpSubmitBtn');
 var $logInSubmitBtn = $('#loginSubmitBtn');
+var $searchSubmitBtn = $('#searchSubmitBtn');
 
 // ADDED BY EO
 // Function
@@ -59,22 +60,28 @@ var displayPetsFound = function () {
   $petFoundList.append($pets);
 }
 
+
 // ADDED BY BD
 var searchTaken = false;
 
-var dummyArray = [
-  "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-  "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-  "https://images.unsplash.com/photo-1445820200644-69f87d946277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-];
+// var dummyArray = [
+//   "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+//   "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+//   "https://images.unsplash.com/photo-1445820200644-69f87d946277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+// ];
+
+var dummyPhoto = "https://images.unsplash.com/photo-1445820200644-69f87d946277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60";
+
 
 function addCards() {
+  var dummyArray = petsFoundObject.petsFound;   // petsFoundObject is a global set in apiRoutes.js /searchPets route
   if (!searchTaken) {
     $("#carousel-container").hide();
     $("a .caro-controls").hide();
 
   } else {
     addIndicators();
+    $('#header-container').empty();
     $("#carousel-container").show();
     $("a .caro-controls").show();
     for (var i = 0; i < dummyArray.length; i++) {
@@ -86,9 +93,10 @@ function addCards() {
       } else {
         newDiv.attr("class", "carousel-item card");
       }
+      if (dummyArray[i].photos.length === 0) dummyArray[i].photos[0].full = dummyPhoto; // if no photo then use dummyPhoto
       var image = $("<img>");
       image
-        .attr("src", dummyArray[i])
+        .attr("src", dummyArray[i].photos[0].full)
         .attr("class", "searchResultImg card-img-top");
       newDiv.append(image);
       var cardBody = $("<div>").attr("class", "card-body");
@@ -104,6 +112,7 @@ function addCards() {
 
 
 function addIndicators() {
+  var dummyArray = petsFoundObject.petsFound;   // petsFoundObject is a global set in apiRoutes.js /searchPets route
   for (var i = 0; i < dummyArray.length; i++) {
     if (i === 0) {
       var listItem = $("<li>")
@@ -119,17 +128,6 @@ function addIndicators() {
   }
 }
 
-$("#searchBtn").on("click", function () {
-  event.preventDefault();
-  if ($(this).attr("taken") === "false") {
-    $("#header-container").hide();
-    searchTaken = true;
-    $(this).attr("taken", "true");
-    console.log($(this));
-    addCards();
-  }
-  handleLoadPetTypesBtnClick();
-});
 
 
 // ** On-click events, per convention all call handlers in indexOnClickHandlers.js
@@ -141,7 +139,8 @@ $("#logOutBtn").on("click", function () {
 });
 
 $("#searchPageBtn").on("click", function () {
-  window.location.href = "/search";
+  handleSearchPageBtnClick();
+  // window.location.href = "/search";
 });
 
 $signUpSubmitBtn.on("click", function () {
@@ -164,3 +163,4 @@ $("#homePageBtn").on("click", function () {
 $loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
 $searchPetsBtn.on("click", handleSearchPetsBtnClick);
 $petFoundList.on("click", ".choose", handleChooseBtnClick);
+$searchSubmitBtn.on("click", handleSearchSubmitBtnClick);
