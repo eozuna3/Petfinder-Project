@@ -152,3 +152,30 @@ module.exports = function (app) {
       });
   });
 };
+
+/ Create a 'Sign Up' page
+app.post("/api/signup", function (req, res) {
+  console.log("req.body", req.body);
+  db.Customer.create({
+    userFirstName: req.body.userFirstName,
+        userLastName: req.body.userLastName,
+        userName: req.body.userName,
+        userEmail: req.body.userEmail,
+        userZip: req.body.userZip,
+        userPassword: req.body.userPassword
+  }).then(function (dbCustomers) {
+    res.json(dbCustomers);
+  });
+});
+//'Login' page
+app.post("/api/login", function (req, res) {
+  console.log("req.body", req.body);
+  db.Customer.findAll({
+    where: {
+        userName: req.body.userName,
+        userPassword: req.body.userPassword
+    }
+  }).then(function (dbCustomers) {
+    res.json(dbCustomers);
+  });
+});
