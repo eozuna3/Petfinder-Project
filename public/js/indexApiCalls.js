@@ -10,7 +10,7 @@ var API = {
             url: "api/loadPetTypes/"
         })
             .then(function (petTypes) {
-                console.log("petTypes: ", petTypes);
+                // console.log("petTypes: ", petTypes);
                 petTypesObject = petTypes;
             })
             .catch(function (err) {
@@ -29,7 +29,7 @@ var API = {
             .then(function (petsFound) {
                 // console.log("petTypes: ", petsFound);
                 petsFoundObject = petsFound;
-                console.log(petsFoundObject);
+                // console.log(petsFoundObject);
                 // location.reload();
             })
             .catch(function (err) {

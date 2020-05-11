@@ -14,7 +14,7 @@ Black - #000000
 
 #header-caro-container {
   width: 62vw;
-  height: 45vw;
+  height: 50vw;
   overflow: hidden;
 }
 
@@ -22,9 +22,13 @@ body {
   background-color: #ECECEC;
 }
 
+.card-body {
+  overflow: auto;
+}
+
 .carousel {
   width: 60vw;
-  max-height: 39vw;
+  max-height: 45vw;
 }
 
 #header-container, #header {
