@@ -84,6 +84,7 @@ function addCards() {
     $("#carousel-container").show();
     $(".carousel-inner").empty();
     $("a.caro-controls").css("display", "flex");
+    console.log(dummyArray[1]);
     for (var i = 0; i < dummyArray.length; i++) {
       // if the survey has been taken and there are results, add images to cards in the carousel
       var newDiv = $("<div>");
@@ -99,7 +100,6 @@ function addCards() {
           dummyArray[i].photos.push({
             full: "https://t7-live-ahsd8.nyc3.cdn.digitaloceanspaces.com/animalhumanesociety.org/files/styles/animal_450x330/flypub/default_images/shy_10.jpg?itok=xmk-2ZMz"
           });
-          // console.log(dummyArray[i]);
         } // if no photo then use dummyPhoto
       var image = $("<img>");
       image
@@ -110,7 +110,15 @@ function addCards() {
       var cardTitle = $("<h5>")
         .attr("class", "card-title")
         .html(dummyArray[i].name);
+      var animalInfo = $("<p>").attr("class", "card-text");
+      animalInfo.html(`ID Number: ${dummyArray[i].id}
+      Gender: ${dummyArray[i].gender}
+      Age: ${dummyArray[i].age}
+      Status: ${dummyArray[i].status}
+      Contact: ${dummyArray[i].contact.email} ${dummyArray[i].contact.phone}
+      Breeds: ${dummyArray[i].breeds.primary}`);
       cardBody.append(cardTitle);
+      cardBody.append(animalInfo);
       newDiv.append(cardBody);
       $(".carousel-inner").append(newDiv);
     }
