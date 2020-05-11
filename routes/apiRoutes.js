@@ -151,9 +151,7 @@ module.exports = function (app) {
         console.log("errorToken: \n", error.response);
       });
   });
-};
-
-/ Create a 'Sign Up' page
+// Create a 'Sign Up' page
 app.post("/api/signup", function (req, res) {
   console.log("req.body", req.body);
   db.Customer.create({
@@ -167,6 +165,8 @@ app.post("/api/signup", function (req, res) {
     res.json(dbCustomers);
   });
 });
+
+
 //'Login' page
 app.post("/api/login", function (req, res) {
   console.log("req.body", req.body);
@@ -179,3 +179,8 @@ app.post("/api/login", function (req, res) {
     res.json(dbCustomers);
   });
 });
+
+};
+
+
+
