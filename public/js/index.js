@@ -82,6 +82,7 @@ function addCards() {
     addIndicators();
     $('#header-container').empty();
     $("#carousel-container").show();
+    $(".carousel-inner").empty();
     $("a.caro-controls").css("display", "flex");
     for (var i = 0; i < dummyArray.length; i++) {
       // if the survey has been taken and there are results, add images to cards in the carousel
@@ -92,7 +93,14 @@ function addCards() {
       } else {
         newDiv.attr("class", "carousel-item card");
       }
-      if (dummyArray[i].photos.length === 0) dummyArray[i].photos[0].full = dummyPhoto; // if no photo then use dummyPhoto
+      if (dummyArray[i].photos.length === 0) 
+        {
+          console.log("no photo for photo " + i);
+          dummyArray[i].photos.push({
+            full: "https://t7-live-ahsd8.nyc3.cdn.digitaloceanspaces.com/animalhumanesociety.org/files/styles/animal_450x330/flypub/default_images/shy_10.jpg?itok=xmk-2ZMz"
+          });
+          // console.log(dummyArray[i]);
+        } // if no photo then use dummyPhoto
       var image = $("<img>");
       image
         .attr("src", dummyArray[i].photos[0].full)
@@ -111,16 +119,17 @@ function addCards() {
 
 
 function addIndicators() {
+  $(".carousel-indicators").empty();
   var dummyArray = petsFoundObject.petsFound;   // petsFoundObject is a global set in apiRoutes.js /searchPets route
   for (var i = 0; i < dummyArray.length; i++) {
     if (i === 0) {
       var listItem = $("<li>")
-        .attr("data-target", "#demo")
+        .attr("data-target", "#searchCaro")
         .attr("data-slide-to", i)
         .attr("class", "active");
     } else {
       var listItem = $("<li>")
-        .attr("data-target", "#demo")
+        .attr("data-target", "#searchCaro")
         .attr("data-slide-to", i);
     }
     $(".carousel-indicators").append(listItem);
