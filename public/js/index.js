@@ -15,6 +15,7 @@ var $logOutBtn = $("#logOutBtn");
 var $homePageBtn = $("#homePageBtn");
 var $searchPageBtn = $("#searchPageBtn");
 var $deleteChosenPetBtn = $(".deleteChosenPetBtn");
+var $carouselContainer = $("#carousel-container");
 
 var customerId = 0;
 var userName = "guest";
@@ -98,9 +99,9 @@ function addCards() {
       var newDiv = $("<div>");
       if (i === 0) {
         // first item in the carousel is 'active'
-        newDiv.attr("class", "carousel-item active card");
+        newDiv.attr({ "class": "carousel-item active card", "data-id": dummyArray[i].id });  // added data-id for onClick choose
       } else {
-        newDiv.attr("class", "carousel-item card");
+        newDiv.attr({ "class": "carousel-item card", "data-id": dummyArray[i].id });   // added data-id for onClick choose
       }
       if (dummyArray[i].photos.length === 0) {
         console.log("no photo for photo " + i);
@@ -114,9 +115,20 @@ function addCards() {
         .attr("class", "searchResultImg card-img-top");
       newDiv.append(image);
       var cardBody = $("<div>").attr("class", "card-body");
+      var cardButton = $("<button>")                           // add button to choose
+        .addClass("btn btn-danger float-right choose")             // add button to choose
+        .attr({
+          "data-id": dummyArray[i].id,
+          "petName": dummyArray[i].name,
+          "petUrl": dummyArray[i].url,
+          "petDescription": dummyArray[i].name,
+          "petImage": dummyArray[i].photos[0].full
+        })
+        .text("Choose");                                    // add button to choose
       var cardTitle = $("<h5>")
         .attr("class", "card-title")
         .html(dummyArray[i].name);
+      cardTitle.append(cardButton);
       var animalInfo = $("<p>").attr("class", "card-text");
       animalInfo.html(`ID Number: ${dummyArray[i].id}
       Gender: ${dummyArray[i].gender}
@@ -171,6 +183,7 @@ $logInSubmitBtn.on("click", function () {
 
 // ** ADDED BY SB AND EO
 // Added event listeners for Friendly Neighborhood Pet Finder
+$carouselContainer.on("click", ".choose", handleChooseBtnClick);
 $loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
 $searchPetsBtn.on("click", handleSearchPetsBtnClick);
 $petFoundList.on("click", ".choose", handleChooseBtnClick);

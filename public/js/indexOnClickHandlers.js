@@ -76,11 +76,24 @@ var handleSearchPetsBtnClick = function (event) {
 // handleChooseBtnClick is called when a pet's choose button is clicked
 // Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
 var handleChooseBtnClick = function () {
-    var idToChoose = $(this)
-        .parent()
-        .attr("data-id");
-    var customerId = 1;
-    API.choosePet(idToChoose, customerId).then(function () {
+    console.log("handleChooseBtnClick");
+    var petId = $(this).attr("data-id");
+    var petName = $(this).attr("petName");
+    var petUrl = $(this).attr("petUrl");
+    var petDescription = $(this).attr("petDescription");
+    var petId = $(this).attr("data-id");
+    var petImage = $(this).attr("petImage");
+    console.log("idChosen", petId);
+    var customerId = sessionStorage.getItem("customerId");
+    var choosePetRequestObject = {
+        petId: petId,
+        customerId: customerId,
+        petName: petName,
+        description: petDescription,
+        url: petUrl,
+        petImage: petImage
+    };
+    API.choosePet(choosePetRequestObject).then(function () {
         console.log("API.choosePet success");
     });
 };

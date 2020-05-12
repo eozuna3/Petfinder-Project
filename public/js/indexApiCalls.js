@@ -36,15 +36,15 @@ var API = {
                 console.log("error getting types from PetFinder: ", err);
             });
     },
-    choosePet: function (petId, customerId) {
-        var bodyObj = { petId: petId, customerId: customerId };
+    choosePet: function (choosePetRequestObject) {
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
             },
             type: "POST",
             url: "api/choosePet",
-            data: JSON.stringify(bodyObj)
+            // data: choosePetRequestObject
+            data: JSON.stringify(choosePetRequestObject)
         });
     },
     signup: function (customerObject) {

@@ -19,7 +19,11 @@ module.exports = function (app) {
     console.log("req.body", req.body);
     db.ChosenPet.create({
       petId: req.body.petId,
-      customerId: req.body.customerId
+      customerId: req.body.customerId,
+      petImage: req.body.petImage,
+      description: req.body.description,
+      petName: req.body.petName,
+      url: req.body.url
     }).then(function (dbChosenPets) {
       res.json(dbChosenPets);
     });
