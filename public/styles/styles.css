@@ -8,6 +8,11 @@ White - #ffffff
 Black - #000000
 */
 
+a.navbar-brand img#navLogo {
+ height: 20vw;
+ padding: 0vw;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
