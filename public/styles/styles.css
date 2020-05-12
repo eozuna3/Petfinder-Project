@@ -6,6 +6,9 @@ Light Blue - #90CCF4
 Dark Blue - #5CA2D5
 White - #ffffff
 Black - #000000
+
+font-family: 'Contrail One', cursive;
+font-family: 'Lato', sans-serif;
 */
 
 nav {
@@ -28,6 +31,7 @@ nav {
 }
 
 #navTitle {
+  font-family: 'Contrail One', cursive;
   position: relative;
   left: 11vw;
   color: #90CCF4;
