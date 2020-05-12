@@ -15,6 +15,7 @@ nav {
   top: 0vw;
   border-top: none;
   width: 100%;
+  margin-bottom: 0px;
 }
 
 #navLogo {
@@ -39,7 +40,7 @@ nav {
 
 #header-caro-container {
   width: 62vw;
-  height: 50vw;
+  /* height: 50vw; */
   overflow: hidden;
 }
 
@@ -65,5 +66,5 @@ a.caro-controls {
 }
 
 .searchResultImg {
-  max-height: 40vw;
+  max-height: 30vw;
 }
