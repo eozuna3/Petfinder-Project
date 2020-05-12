@@ -6,7 +6,18 @@ Light Blue - #90CCF4
 Dark Blue - #5CA2D5
 White - #ffffff
 Black - #000000
+
+font-family: 'Contrail One', cursive;
+font-family: 'Lato', sans-serif;
 */
+
+a, form, p, span, select, button, h1, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+h2 {
+  font-family: 'Contrail One', cursive;
+}
 
 nav {
   background-color: #ffffff;
@@ -15,6 +26,7 @@ nav {
   top: 0vw;
   border-top: none;
   width: 100%;
+  margin-bottom: 0px;
 }
 
 #navLogo {
@@ -27,6 +39,7 @@ nav {
 }
 
 #navTitle {
+  font-family: 'Contrail One', cursive;
   position: relative;
   left: 11vw;
   color: #90CCF4;
@@ -39,7 +52,7 @@ nav {
 
 #header-caro-container {
   width: 62vw;
-  height: 50vw;
+  /* height: 50vw; */
   overflow: hidden;
 }
 
@@ -65,5 +78,5 @@ a.caro-controls {
 }
 
 .searchResultImg {
-  max-height: 40vw;
+  max-height: 30vw;
 }
