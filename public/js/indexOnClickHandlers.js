@@ -76,11 +76,24 @@ var handleSearchPetsBtnClick = function (event) {
 // handleChooseBtnClick is called when a pet's choose button is clicked
 // Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
 var handleChooseBtnClick = function () {
-    var idToChoose = $(this)
-        .parent()
-        .attr("data-id");
-    var customerId = 1;
-    API.choosePet(idToChoose, customerId).then(function () {
+    console.log("handleChooseBtnClick");
+    var petId = $(this).attr("data-id");
+    var petName = $(this).attr("petName");
+    var petUrl = $(this).attr("petUrl");
+    var petDescription = $(this).attr("petDescription");
+    var petId = $(this).attr("data-id");
+    var petImage = $(this).attr("petImage");
+    console.log("idChosen", petId);
+    var customerId = sessionStorage.getItem("customerId");
+    var choosePetRequestObject = {
+        petId: petId,
+        customerId: customerId,
+        petName: petName,
+        description: petDescription,
+        url: petUrl,
+        petImage: petImage
+    };
+    API.choosePet(choosePetRequestObject).then(function () {
         console.log("API.choosePet success");
     });
 };
@@ -98,9 +111,9 @@ var handleLoginSubmitBtnClick = function () {
     API.login(customerObject).then(function (response) {
         console.log("API.login success");
         if (response.length > 0) {
-            customerId = response[0].id;
-            userName = response[0].userName;
-            console.log("Customer Id", customerId, "userName: ", userName);
+            sessionStorage.setItem("customerId", response[0].id);
+            sessionStorage.setItem("userName", response[0].userName);
+            console.log("Customer Id", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
         } else console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
 
     });
@@ -115,7 +128,7 @@ var handleSignUpSubmitBtnClick = function () {
         userName: $("#userSignUpName").val(),
         userEmail: $("#userEmail").val(),
         userZip: $("#userZip").val(),
-       // userPassword: $("#userSignUpPassword").val(),
+        // userPassword: $("#userSignUpPassword").val(),
         userPassword: "tester",
     };
     API.signup(newCustomerObject).then(function () {
@@ -125,7 +138,8 @@ var handleSignUpSubmitBtnClick = function () {
 };
 
 var handleLogOutBtnClick = function () {
-  window.location.replace("/login");
+    sessionStorage.clear();
+    window.location.replace("/login");
 };
 
 var handleHomePageBtnClick = function () {
@@ -140,11 +154,11 @@ var handleSearchPageBtnClick = function () {
     window.location.href = "/search";
 };
 
-var handleDeleteChosenPetBtnClick = function (petId){
+var handleDeleteChosenPetBtnClick = function (petId) {
     console.log("Delete button for chosen pet# " + petId);
-    API.deletePet(petId).then(function(response) {
+    API.deletePet(petId).then(function (response) {
         console.log(response);
         window.location.replace("/homepage");
-      });
+    });
 };
 

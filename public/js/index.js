@@ -15,7 +15,10 @@ var $logOutBtn = $("#logOutBtn");
 var $homePageBtn = $("#homePageBtn");
 var $searchPageBtn = $("#searchPageBtn");
 var $deleteChosenPetBtn = $(".deleteChosenPetBtn");
+var $carouselContainer = $("#carousel-container");
 
+var customerId = 0;
+var userName = "guest";
 
 // ADDED BY EO
 // Function
@@ -96,26 +99,36 @@ function addCards() {
       var newDiv = $("<div>");
       if (i === 0) {
         // first item in the carousel is 'active'
-        newDiv.attr("class", "carousel-item active card");
+        newDiv.attr({ "class": "carousel-item active card", "data-id": dummyArray[i].id });  // added data-id for onClick choose
       } else {
-        newDiv.attr("class", "carousel-item card");
+        newDiv.attr({ "class": "carousel-item card", "data-id": dummyArray[i].id });   // added data-id for onClick choose
       }
-      if (dummyArray[i].photos.length === 0) 
-        {
-          console.log("no photo for photo " + i);
-          dummyArray[i].photos.push({
-            full: "https://t7-live-ahsd8.nyc3.cdn.digitaloceanspaces.com/animalhumanesociety.org/files/styles/animal_450x330/flypub/default_images/shy_10.jpg?itok=xmk-2ZMz"
-          });
-        } // if no photo then use dummyPhoto
+      if (dummyArray[i].photos.length === 0) {
+        console.log("no photo for photo " + i);
+        dummyArray[i].photos.push({
+          full: "https://t7-live-ahsd8.nyc3.cdn.digitaloceanspaces.com/animalhumanesociety.org/files/styles/animal_450x330/flypub/default_images/shy_10.jpg?itok=xmk-2ZMz"
+        });
+      } // if no photo then use dummyPhoto
       var image = $("<img>");
       image
         .attr("src", dummyArray[i].photos[0].full)
         .attr("class", "searchResultImg card-img-top");
       newDiv.append(image);
       var cardBody = $("<div>").attr("class", "card-body");
+      var cardButton = $("<button>")                           // add button to choose
+        .addClass("btn btn-danger float-right choose")             // add button to choose
+        .attr({
+          "data-id": dummyArray[i].id,
+          "petName": dummyArray[i].name,
+          "petUrl": dummyArray[i].url,
+          "petDescription": dummyArray[i].name,
+          "petImage": dummyArray[i].photos[0].full
+        })
+        .text("Choose");                                    // add button to choose
       var cardTitle = $("<h5>")
         .attr("class", "card-title")
         .html(dummyArray[i].name);
+      cardTitle.append(cardButton);
       var animalInfo = $("<p>").attr("class", "card-text");
       animalInfo.html(`ID Number: ${dummyArray[i].id}
       Gender: ${dummyArray[i].gender}
@@ -162,11 +175,15 @@ $signUpSubmitBtn.on("click", function () {
 $logInSubmitBtn.on("click", function () {
   console.log('log in button clicked');
   handleLoginSubmitBtnClick();
-  //window.location.href = "/homepage";
+  window.location.href = "/homepage";
+  console.log("customerId returned", sessionStorage.getItem("customerId"));
+  console.log("Customer Id and username returned", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
+
 });
 
 // ** ADDED BY SB AND EO
 // Added event listeners for Friendly Neighborhood Pet Finder
+$carouselContainer.on("click", ".choose", handleChooseBtnClick);
 $loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
 $searchPetsBtn.on("click", handleSearchPetsBtnClick);
 $petFoundList.on("click", ".choose", handleChooseBtnClick);
@@ -174,6 +191,6 @@ $searchSubmitBtn.on("click", handleSearchSubmitBtnClick);
 $logOutBtn.on("click", handleLogOutBtnClick);
 $homePageBtn.on("click", handleHomePageBtnClick);
 $searchPageBtn.on("click", handleSearchPageBtnClick);
-$deleteChosenPetBtn.on("click", function() {
+$deleteChosenPetBtn.on("click", function () {
   handleDeleteChosenPetBtnClick($(this).data("id"));
 });

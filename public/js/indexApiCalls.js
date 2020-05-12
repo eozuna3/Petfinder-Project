@@ -36,15 +36,15 @@ var API = {
                 console.log("error getting types from PetFinder: ", err);
             });
     },
-    choosePet: function (petId, customerId) {
-        var bodyObj = { petId: petId, customerId: customerId };
+    choosePet: function (choosePetRequestObject) {
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
             },
             type: "POST",
             url: "api/choosePet",
-            data: JSON.stringify(bodyObj)
+            // data: choosePetRequestObject
+            data: JSON.stringify(choosePetRequestObject)
         });
     },
     signup: function (customerObject) {
@@ -59,7 +59,7 @@ var API = {
     },
     login: function (customerObject) {
         //var bodyObj = customerObject
-        console.log('cutomer object' , customerObject);
+        console.log('cutomer object', customerObject);
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
@@ -67,9 +67,10 @@ var API = {
             type: "GET",
             url: "api/login",
             data: customerObject
-        });
+        })
+        // .then(function () { location.reload() })
     },
-    deletePet: function (Id){
+    deletePet: function (Id) {
         return $.ajax({
             method: "DELETE",
             url: "/api/deletePet/" + Id
