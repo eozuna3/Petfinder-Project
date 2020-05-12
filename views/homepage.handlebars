@@ -1,3 +1,4 @@
+{{!-- Nav Bar --}}
 <nav class="navbar navbar-light bg-light py-3">
      <a class="navbar-brand">Your Friendly Neighborhood Pet Adoption</a>
      <form class="form-inline">
@@ -6,6 +7,7 @@
      </form>
 </nav>
 
+{{!-- Display for user name --}}
 <div class="container-fluid">
      <div class="row my-3">
           <div class="col-md-12 text-center">
@@ -14,13 +16,14 @@
      </div>
 </div>
 
+{{!-- Container for displaying users/customers previous animal selections --}}
 <div class="container-fluid">
      <h3>Pets Found:</h3>
      <ul id="chosenPetList" class="list-group">
           {{#each ChosenPets}}
           <li data-id="{{dataValues.id}}" class="list-group-item">
                <a href="{{dataValues.url}}" target="_blank">{{dataValues.petName}}</a>
-               <button data-id="{{dataValues.id}}" class="btn btn-danger float-right delete">Delete</button>
+               <button data-id="{{dataValues.id}}" class="btn btn-danger float-right deleteChosenPetBtn">Delete</button>
           </li>
           {{/each}}
      </ul>
@@ -30,11 +33,3 @@
 <script src="/js/indexApiCalls.js"></script>
 <script src="/js/indexOnClickHandlers.js"></script>
 <script src="/js/index.js"></script>
-<!--<script type="text/javascript">
-     $(window).on("load", function () {
-          alert("page has loaded");
-          API.searchPets().then(function () {
-               displayPetsFound();
-          });
-     });
-</script>-->

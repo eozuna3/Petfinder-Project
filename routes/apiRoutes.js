@@ -122,23 +122,23 @@ module.exports = function (app) {
     })
       .then(function (searchPetsResponse) {
         // console.log(searchPetsResponse);
-        var petsFoundObject = {
+        /*var petsFoundObject = {
           petsFound: searchPetsResponse.data.animals
         };
-        /*var petsFoundArray = searchPetsResponse.data.animals;
+        var petsFoundArray = searchPetsResponse.data.animals;
         console.log("\n---------------------\n");
         console.log("!!!THIS IS THE JSON RETURNED AFTER PETFINDER API CALL:\n");
        
         //  ADDED BY EO
         // Code that populates the chosenpets database for testing this for loop can then be used later in the index.js to populate caro
-        for (let index = 8; index < 11; index++) {
+        for (let index = 0; index < 5; index++) {
           console.log(petsFoundArray[index].id);
           console.log(petsFoundArray[index].name);
           console.log(petsFoundArray[index].url);
           console.log(petsFoundArray[index].description);
           db.ChosenPet.create({
             petId: petsFoundArray[index].id,
-            customerId: 1,
+            customerId: 6,
             petName: petsFoundArray[index].name,
             url: petsFoundArray[index].url,
             description: petsFoundArray[index].description
@@ -151,6 +151,7 @@ module.exports = function (app) {
         console.log("errorToken: \n", error.response);
       });
   });
+
 // Create a 'Sign Up' page
 app.post("/api/signup", function (req, res) {
   console.log("req.body", req.body);
@@ -181,6 +182,18 @@ app.get("/api/login", function (req, res) {
   });
 });
 
+//  Delete a chosen pet from the database
+app.delete("/api/deletePet/:id", function(req, res) {
+    db.ChosenPet.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbChosenPets) {
+        console.log("ChosenPet successfully deleted from database");
+        res.json(dbChosenPets);
+      })
+  });
 };
 
 

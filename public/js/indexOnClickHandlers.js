@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
+
 // ** These are all called from onClick events at bottom of index.js
-
-
 
 // ** ADDED BY SB
 // handleLoadPetTypesBtnClick is called when loadPetTypes button is clicked or from searchSubmitBtnClick to start doing searches 
@@ -14,13 +15,7 @@ var handleLoadPetTypesBtnClick = function () {
 
 // ** brought in from index.js by SB to standardize all onClick event handlers in this file
 //  called from searchPageBtn onClick event, load petfinder.com token and pet types in petTypesObject, then load search page
-var handleSearchPageBtnClick = function (event) {
-    // event.preventDefault();
-    API.loadPetTypes().then(function (petTypesObject) {
-        window.location.href = "/search";
-        console.log("Going for token and petTypes object from petFinder: ", petTypesObject);
-    });
-}
+
 
 
 // ** brought in from index.js by SB to standardize all onClick event handlers in this file
@@ -39,9 +34,9 @@ var handleSearchSubmitBtnClick = function (event) {
             age: $("#age").val(),
             coat: $("#coat").val()
         };
-        console.log(query);
+        // console.log(query);
         API.searchPets(query).then(function () {
-            console.log("petsFoundObject: ", petsFoundObject);  // petsFoundObject is a global set in API.searchPets, 
+            // console.log("petsFoundObject: ", petsFoundObject);  // petsFoundObject is a global set in API.searchPets, 
             // but could be returned from API as well.
             searchTaken = true;
             addCards();
@@ -126,4 +121,30 @@ var handleSignUpSubmitBtnClick = function () {
     API.signup(newCustomerObject).then(function () {
         console.log("API.signup success");
     });
+
 };
+
+var handleLogOutBtnClick = function () {
+  window.location.replace("/login");
+};
+
+var handleHomePageBtnClick = function () {
+    window.location.replace("/homepage");
+};
+
+var handleSearchPageBtnClick = function () {
+    // event.preventDefault();
+    /*API.loadPetTypes().then(function (petTypesObject) {
+        console.log("Going for token and petTypes object from petFinder: ", petTypesObject);
+    });*/
+    window.location.href = "/search";
+};
+
+var handleDeleteChosenPetBtnClick = function (petId){
+    console.log("Delete button for chosen pet# " + petId);
+    API.deletePet(petId).then(function(response) {
+        console.log(response);
+        window.location.replace("/homepage");
+      });
+};
+

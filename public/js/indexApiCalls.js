@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
+
 // The API object contains methods for each kind of request we'll make
 // module.exports = function () {
 var API = {
@@ -7,7 +10,7 @@ var API = {
             url: "api/loadPetTypes/"
         })
             .then(function (petTypes) {
-                console.log("petTypes: ", petTypes);
+                // console.log("petTypes: ", petTypes);
                 petTypesObject = petTypes;
             })
             .catch(function (err) {
@@ -26,7 +29,7 @@ var API = {
             .then(function (petsFound) {
                 // console.log("petTypes: ", petsFound);
                 petsFoundObject = petsFound;
-                console.log(petsFoundObject);
+                // console.log(petsFoundObject);
                 // location.reload();
             })
             .catch(function (err) {
@@ -64,6 +67,12 @@ var API = {
             type: "GET",
             url: "api/login",
             data: customerObject
+        });
+    },
+    deletePet: function (Id){
+        return $.ajax({
+            method: "DELETE",
+            url: "/api/deletePet/" + Id
         });
     }
 };
