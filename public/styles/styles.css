@@ -11,6 +11,14 @@ font-family: 'Contrail One', cursive;
 font-family: 'Lato', sans-serif;
 */
 
+a, form, p, span, select, button, h1, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+h2 {
+  font-family: 'Contrail One', cursive;
+}
+
 nav {
   background-color: #ffffff;
   height: 8vw;
