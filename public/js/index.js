@@ -15,6 +15,7 @@ var $homePageBtn = $("#homePageBtn");
 var $searchPageBtn = $("#searchPageBtn");
 var $deleteChosenPetBtn = $(".deleteChosenPetBtn");
 
+
 // ADDED BY EO
 // Function
 /*var handleDeleteBtn = function(petId) {
