@@ -8,9 +8,29 @@ White - #ffffff
 Black - #000000
 */
 
-a.navbar-brand img#navLogo {
- height: 20vw;
- padding: 0vw;
+nav {
+  background-color: #ffffff;
+  height: 8vw;
+  position: relative;
+  top: 0vw;
+  border-top: none;
+  width: 100%;
+}
+
+#navLogo {
+  width: 12%;
+  display: block;
+  top: -1.7vw;
+  position: absolute;
+  z-index: 10;
+
+}
+
+#navTitle {
+  position: relative;
+  left: 11vw;
+  color: #90CCF4;
+  font-size: 2vw;
 }
 
 .list-group-item {
