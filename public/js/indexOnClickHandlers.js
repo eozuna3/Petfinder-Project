@@ -98,9 +98,9 @@ var handleLoginSubmitBtnClick = function () {
     API.login(customerObject).then(function (response) {
         console.log("API.login success");
         if (response.length > 0) {
-            customerId = response[0].id;
-            userName = response[0].userName;
-            console.log("Customer Id", customerId, "userName: ", userName);
+            sessionStorage.setItem("customerId", response[0].id);
+            sessionStorage.setItem("userName", response[0].userName);
+            console.log("Customer Id", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
         } else console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
 
     });
@@ -115,7 +115,7 @@ var handleSignUpSubmitBtnClick = function () {
         userName: $("#userSignUpName").val(),
         userEmail: $("#userEmail").val(),
         userZip: $("#userZip").val(),
-       // userPassword: $("#userSignUpPassword").val(),
+        // userPassword: $("#userSignUpPassword").val(),
         userPassword: "tester",
     };
     API.signup(newCustomerObject).then(function () {
@@ -125,7 +125,8 @@ var handleSignUpSubmitBtnClick = function () {
 };
 
 var handleLogOutBtnClick = function () {
-  window.location.replace("/login");
+    sessionStorage.clear();
+    window.location.replace("/login");
 };
 
 var handleHomePageBtnClick = function () {
@@ -140,11 +141,11 @@ var handleSearchPageBtnClick = function () {
     window.location.href = "/search";
 };
 
-var handleDeleteChosenPetBtnClick = function (petId){
+var handleDeleteChosenPetBtnClick = function (petId) {
     console.log("Delete button for chosen pet# " + petId);
-    API.deletePet(petId).then(function(response) {
+    API.deletePet(petId).then(function (response) {
         console.log(response);
         window.location.replace("/homepage");
-      });
+    });
 };
 

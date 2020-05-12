@@ -16,6 +16,8 @@ var $homePageBtn = $("#homePageBtn");
 var $searchPageBtn = $("#searchPageBtn");
 var $deleteChosenPetBtn = $(".deleteChosenPetBtn");
 
+var customerId = 0;
+var userName = "guest";
 
 // ADDED BY EO
 // Function
@@ -100,13 +102,12 @@ function addCards() {
       } else {
         newDiv.attr("class", "carousel-item card");
       }
-      if (dummyArray[i].photos.length === 0) 
-        {
-          console.log("no photo for photo " + i);
-          dummyArray[i].photos.push({
-            full: "https://t7-live-ahsd8.nyc3.cdn.digitaloceanspaces.com/animalhumanesociety.org/files/styles/animal_450x330/flypub/default_images/shy_10.jpg?itok=xmk-2ZMz"
-          });
-        } // if no photo then use dummyPhoto
+      if (dummyArray[i].photos.length === 0) {
+        console.log("no photo for photo " + i);
+        dummyArray[i].photos.push({
+          full: "https://t7-live-ahsd8.nyc3.cdn.digitaloceanspaces.com/animalhumanesociety.org/files/styles/animal_450x330/flypub/default_images/shy_10.jpg?itok=xmk-2ZMz"
+        });
+      } // if no photo then use dummyPhoto
       var image = $("<img>");
       image
         .attr("src", dummyArray[i].photos[0].full)
@@ -162,7 +163,10 @@ $signUpSubmitBtn.on("click", function () {
 $logInSubmitBtn.on("click", function () {
   console.log('log in button clicked');
   handleLoginSubmitBtnClick();
-  //window.location.href = "/homepage";
+  window.location.href = "/homepage";
+  console.log("customerId returned", sessionStorage.getItem("customerId"));
+  console.log("Customer Id and username returned", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
+
 });
 
 // ** ADDED BY SB AND EO
@@ -174,6 +178,6 @@ $searchSubmitBtn.on("click", handleSearchSubmitBtnClick);
 $logOutBtn.on("click", handleLogOutBtnClick);
 $homePageBtn.on("click", handleHomePageBtnClick);
 $searchPageBtn.on("click", handleSearchPageBtnClick);
-$deleteChosenPetBtn.on("click", function() {
+$deleteChosenPetBtn.on("click", function () {
   handleDeleteChosenPetBtnClick($(this).data("id"));
 });

@@ -111,6 +111,7 @@ module.exports = function (app) {
     var queryString = `?type=${req.query.type}&coat=${req.query.coat}&size=${req.query.size}` +
       `&breed=${req.query.breed}&age=${req.query.age}&gender=${req.query.gender}`;
     console.log("queryString", queryString);
+    console.log("token", process.env.PETFINDER_ACCESS_TOKEN);
     axios({
       headers: {
         Authorization: "Bearer " + process.env.PETFINDER_ACCESS_TOKEN
@@ -122,9 +123,10 @@ module.exports = function (app) {
     })
       .then(function (searchPetsResponse) {
         // console.log(searchPetsResponse);
-        /*var petsFoundObject = {
+        var petsFoundObject = {
           petsFound: searchPetsResponse.data.animals
         };
+        /*
         var petsFoundArray = searchPetsResponse.data.animals;
         console.log("\n---------------------\n");
         console.log("!!!THIS IS THE JSON RETURNED AFTER PETFINDER API CALL:\n");
@@ -145,51 +147,51 @@ module.exports = function (app) {
           });
           console.log("\n---------------------\n");
         }*/
-        res.json(petsFoundObject).end();
+        res.send(petsFoundObject).end();
       })
       .catch(function (error) {
-        console.log("errorToken: \n", error.response);
+        console.log("errorToken: \n", error);
       });
   });
 
-// Create a 'Sign Up' page
-app.post("/api/signup", function (req, res) {
-  console.log("req.body", req.body);
-  db.Customer.create({
-        userFirstName: req.body.userFirstName,
-        userLastName: req.body.userLastName,
-        userName: req.body.userName,
-        userEmail: req.body.userEmail,
-        userZip: req.body.userZip,
-        userPassword: req.body.userPassword
-  }).then(function (dbCustomers) {
-    console.log("dbCustomers:", dbCustomers);
-    res.json(dbCustomers);
+  // Create a 'Sign Up' page
+  app.post("/api/signup", function (req, res) {
+    console.log("req.body", req.body);
+    db.Customer.create({
+      userFirstName: req.body.userFirstName,
+      userLastName: req.body.userLastName,
+      userName: req.body.userName,
+      userEmail: req.body.userEmail,
+      userZip: req.body.userZip,
+      userPassword: req.body.userPassword
+    }).then(function (dbCustomers) {
+      console.log("dbCustomers:", dbCustomers);
+      res.json(dbCustomers);
+    });
   });
-});
 
 
-//'Login' page
-app.get("/api/login", function (req, res) {
-  console.log("req.query", req.query);
-  db.Customer.findAll({
-    where: {
+  //'Login' page
+  app.get("/api/login", function (req, res) {
+    console.log("req.query", req.query);
+    db.Customer.findAll({
+      where: {
         userName: req.query.userName,
         userPassword: req.query.userPassword
-    }
-  }).then(function (dbCustomers) {
-    res.json(dbCustomers);
+      }
+    }).then(function (dbCustomers) {
+      res.json(dbCustomers);
+    });
   });
-});
 
-//  Delete a chosen pet from the database
-app.delete("/api/deletePet/:id", function(req, res) {
+  //  Delete a chosen pet from the database
+  app.delete("/api/deletePet/:id", function (req, res) {
     db.ChosenPet.destroy({
       where: {
         id: req.params.id
       }
     })
-      .then(function(dbChosenPets) {
+      .then(function (dbChosenPets) {
         console.log("ChosenPet successfully deleted from database");
         res.json(dbChosenPets);
       })
