@@ -89,19 +89,39 @@ var handleChooseBtnClick = function () {
 // handleLoginSubmitBtnClick is called when a pet's choose button is clicked
 // Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
 var handleLoginSubmitBtnClick = function () {
-    var customerObject = {};
-    API.login(customerObject).then(function () {
+    var customerObject = {
+        userName: $('#userName').val(),
+        userPassword: $('#userPassword').val()
+
+    };
+    console.log("customerObject", customerObject);
+    API.login(customerObject).then(function (response) {
         console.log("API.login success");
+        if (response.length > 0) {
+            customerId = response[0].id;
+            userName = response[0].userName;
+            console.log("Customer Id", customerId, "userName: ", userName);
+        } else console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
+
     });
 };
 // ** ADDED BY RZ and SB
 // handleChooseBtnClick is called when a pet's choose button is clicked
 // Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
 var handleSignUpSubmitBtnClick = function () {
-    var newCustomerObject = {};
+    var newCustomerObject = {
+        userFirstName: $("#userFirstName").val(),
+        userLastName: $("#userLastName").val(),
+        userName: $("#userSignUpName").val(),
+        userEmail: $("#userEmail").val(),
+        userZip: $("#userZip").val(),
+       // userPassword: $("#userSignUpPassword").val(),
+        userPassword: "tester",
+    };
     API.signup(newCustomerObject).then(function () {
         console.log("API.signup success");
     });
+
 };
 
 var handleLogOutBtnClick = function () {
@@ -127,3 +147,4 @@ var handleDeleteChosenPetBtnClick = function (petId){
         window.location.replace("/homepage");
       });
 };
+

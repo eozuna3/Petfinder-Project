@@ -48,25 +48,25 @@ var API = {
         });
     },
     signup: function (customerObject) {
-        var bodyObj = customerObject;
         return $.ajax({
-            headers: {
-                "Content-Type": "application/json"
-            },
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
             type: "POST",
             url: "api/signup",
-            data: JSON.stringify(bodyObj)
+            data: customerObject
         });
     },
     login: function (customerObject) {
-        var bodyObj = customerObject;
+        //var bodyObj = customerObject
+        console.log('cutomer object' , customerObject);
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
             },
-            type: "POST",
+            type: "GET",
             url: "api/login",
-            data: JSON.stringify(bodyObj)
+            data: customerObject
         });
     },
     deletePet: function (Id){

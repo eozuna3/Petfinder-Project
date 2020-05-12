@@ -7,6 +7,7 @@
 var $petFoundList = $("#petFound-list");
 var $loadPetTypesBtn = $("#loadPetTypes"); // button to load type object from petfinder
 var $searchPetsBtn = $("#searchPets");
+
 var $signUpSubmitBtn = $("#signUpSubmitBtn");
 var $logInSubmitBtn = $("#logInSubmitBtn");
 var $searchSubmitBtn = $("#searchSubmitBtn");
@@ -155,12 +156,13 @@ function addIndicators() {
 //  **ADDED BY EO
 $signUpSubmitBtn.on("click", function () {
   handleSignUpSubmitBtnClick();
-  window.location.href = "/homepage";
+  //window.location.href = "/homepage";
 });
 
 $logInSubmitBtn.on("click", function () {
+  console.log('log in button clicked');
   handleLoginSubmitBtnClick();
-  window.location.href = "/homepage";
+  //window.location.href = "/homepage";
 });
 
 // ** ADDED BY SB AND EO

@@ -25,7 +25,7 @@ module.exports = function (app) {
     });
   });
 
-  // Create a new customer
+  /* Create a new customer
   app.post("/api/signup", function (req, res) {
     console.log("req.body", req.body);
     db.Customer.create({
@@ -43,7 +43,7 @@ module.exports = function (app) {
     }).then(function (dbLogin) {
       res.json(dbLogin);
     });
-  });
+  });*/
 
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {
@@ -163,18 +163,19 @@ app.post("/api/signup", function (req, res) {
         userZip: req.body.userZip,
         userPassword: req.body.userPassword
   }).then(function (dbCustomers) {
+    console.log("dbCustomers:", dbCustomers);
     res.json(dbCustomers);
   });
 });
 
 
 //'Login' page
-app.post("/api/login", function (req, res) {
-  console.log("req.body", req.body);
+app.get("/api/login", function (req, res) {
+  console.log("req.query", req.query);
   db.Customer.findAll({
     where: {
-        userName: req.body.userName,
-        userPassword: req.body.userPassword
+        userName: req.query.userName,
+        userPassword: req.query.userPassword
     }
   }).then(function (dbCustomers) {
     res.json(dbCustomers);
