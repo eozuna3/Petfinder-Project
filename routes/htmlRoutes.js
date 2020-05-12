@@ -6,12 +6,7 @@ module.exports = function(app) {
   // Load index page
 
   app.get("/", function(req, res) {
-    db.Customer.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+     res.render("login");
   });
 
   // Load example page and pass in an example by id

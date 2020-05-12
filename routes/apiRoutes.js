@@ -122,10 +122,10 @@ module.exports = function (app) {
     })
       .then(function (searchPetsResponse) {
         // console.log(searchPetsResponse);
-        var petsFoundObject = {
+        /*var petsFoundObject = {
           petsFound: searchPetsResponse.data.animals
         };
-        /*var petsFoundArray = searchPetsResponse.data.animals;
+        var petsFoundArray = searchPetsResponse.data.animals;
         console.log("\n---------------------\n");
         console.log("!!!THIS IS THE JSON RETURNED AFTER PETFINDER API CALL:\n");
        
@@ -138,7 +138,7 @@ module.exports = function (app) {
           console.log(petsFoundArray[index].description);
           db.ChosenPet.create({
             petId: petsFoundArray[index].id,
-            customerId: 3,
+            customerId: 6,
             petName: petsFoundArray[index].name,
             url: petsFoundArray[index].url,
             description: petsFoundArray[index].description
@@ -151,11 +151,12 @@ module.exports = function (app) {
         console.log("errorToken: \n", error.response);
       });
   });
+
 // Create a 'Sign Up' page
 app.post("/api/signup", function (req, res) {
   console.log("req.body", req.body);
   db.Customer.create({
-    userFirstName: req.body.userFirstName,
+        userFirstName: req.body.userFirstName,
         userLastName: req.body.userLastName,
         userName: req.body.userName,
         userEmail: req.body.userEmail,
