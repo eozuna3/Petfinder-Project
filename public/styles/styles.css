@@ -71,24 +71,25 @@ nav {
   color: black;
 }
 
-#homePageBtn {
+.btn-primary, #logOutBtn, #logInBtn  {
+  background-color: #90CCF4;
+  border-color: #90CCF4;
+  color: black;
+}
+
+.btn-primary:hover, #logOutBtn:hover, #logInBtn:hover {
+  background-color: #5CA2D5;
+  border-color: #5CA2D5;
+  color: black;
+}
+
+
+#signUpBtn, #searchPageBtn, #homePageBtn {
   background-color: #F78888;
 }
 
-#logOutBtn {
-  background-color: #90CCF4;
-}
-
-#searchPageBtn {
+#signUpBtn:hover, #searchPageBtn:hover, #homePageBtn:hover {
   background-color: #F3D250;
-}
-
-#logInBtn {
-  background-color: #90CCF4;
-}
-
-#signUpBtn {
-  background-color: #F78888;
 }
 
 body {
@@ -98,6 +99,10 @@ body {
 h5.card-title {
   padding: 0px;
   margin: 0px;
+}
+
+span .perfectMatch {
+  color: #5CA2D5;
 }
 
 .heart {
@@ -123,10 +128,37 @@ label {
   margin-top: 2vw;
 }
 
-.card-body {
+#searchCaro .card-body {
   height: 7vw;
   overflow: auto;
 }
+
+#favorited.card {
+  width: 80vw;
+  margin: 0 auto;
+  float: none;
+}
+
+/* .petInfo {
+
+} */
+
+div.card-body {
+  padding: 0px;
+}
+
+#favorited .card-header {
+  background-color: #F78888;
+}
+
+#favorited img {
+  margin: auto;
+  padding: 0px;
+ 
+  display: block;
+  max-height: 35vw;
+}
+
 
 .carousel {
   height: 35vw;
