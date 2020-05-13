@@ -93,10 +93,11 @@ function addCards() {
     $("#carousel-container").show();
     $(".carousel-inner").empty();
     $("a.caro-controls").css("display", "flex");
-    console.log(dummyArray[1]);
+    
     for (var i = 0; i < dummyArray.length; i++) {
+      // console.log(dummyArray[i]);
       // if the survey has been taken and there are results, add images to cards in the carousel
-      var newDiv = $("<div>");
+      var newDiv = $("<div class='caro-img'>");
       if (i === 0) {
         // first item in the carousel is 'active'
         newDiv.attr({ "class": "carousel-item active card", "data-id": dummyArray[i].id });  // added data-id for onClick choose
@@ -116,12 +117,12 @@ function addCards() {
       newDiv.append(image);
       var cardBody = $("<div>").attr("class", "card-body");
       var cardButton = $("<button>")                           // add button to choose
-        .addClass("btn btn-danger float-right choose")             // add button to choose
+        .addClass("btn btn-danger choose")             // add button to choose
         .attr({
           "data-id": dummyArray[i].id,
           "petName": dummyArray[i].name,
           "petUrl": dummyArray[i].url,
-          "petDescription": dummyArray[i].name,
+          "petDescription": dummyArray[i].description,
           "petImage": dummyArray[i].photos[0].full
         })
         .text("Choose");                                    // add button to choose
@@ -130,12 +131,16 @@ function addCards() {
         .html(dummyArray[i].name);
       cardTitle.append(cardButton);
       var animalInfo = $("<p>").attr("class", "card-text");
-      animalInfo.html(`ID Number: ${dummyArray[i].id}
-      Gender: ${dummyArray[i].gender}
-      Age: ${dummyArray[i].age}
-      Status: ${dummyArray[i].status}
-      Contact: ${dummyArray[i].contact.email} ${dummyArray[i].contact.phone}
-      Breeds: ${dummyArray[i].breeds.primary}`);
+      if (dummyArray[i].description == null) {
+        dummyArray[i].description = "No pet description available";
+      }
+      animalInfo.html(`
+      ${dummyArray[i].description} <br><br>
+      Age: ${dummyArray[i].age} | 
+      Status: ${dummyArray[i].status} |
+      Contact: ${dummyArray[i].contact.email} ${dummyArray[i].contact.phone} <br><br>
+      ID Number: ${dummyArray[i].id} <br><br>
+      <a href="${dummyArray[i].url}" target="_blank">More Info</a>`);
       cardBody.append(cardTitle);
       cardBody.append(animalInfo);
       newDiv.append(cardBody);
@@ -146,9 +151,10 @@ function addCards() {
 
 
 function addIndicators() {
-  $(".carousel-indicators").empty();
+  // $(".carousel-indicators").empty();
   var dummyArray = petsFoundObject.petsFound;   // petsFoundObject is a global set in apiRoutes.js /searchPets route
   for (var i = 0; i < dummyArray.length; i++) {
+    // console.log(i);
     if (i === 0) {
       var listItem = $("<li>")
         .attr("data-target", "#searchCaro")

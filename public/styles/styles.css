@@ -51,8 +51,8 @@ nav {
 }
 
 #header-caro-container {
-  width: 62vw;
-  /* height: 50vw; */
+  width: 100vw;
+  height: 45vw;
   overflow: hidden;
 }
 
@@ -60,23 +60,50 @@ body {
   background-color: #ECECEC;
 }
 
+h5.card-title {
+  padding: 0px;
+  margin: 0px;
+}
+
 .card-body {
+  height: 10vw;
   overflow: auto;
 }
 
 .carousel {
-  width: 60vw;
-  max-height: 45vw;
+  height: 35vw;
+  /* background-color: #90CCF4; */
+  /* max-height: 45vw; */
 }
 
 #header-container, #header {
     width: 60vw;
 }
 
-a.caro-controls {
+a.caro-controls, #carousel-container {
   display: none;
 }
 
+.carousel-indicators {
+  z-index: 100;
+}
+
+.caro-img {
+  text-align: center;
+  display: block;
+  max-height: 35vw;
+}
+
+button.choose {
+  margin-left: 1vw;
+}
+
 .searchResultImg {
-  max-height: 30vw;
+  /* min-height: 34vw;
+  max-height: 35vw;
+  height: auto;
+  width: auto; */
+  max-height: 35vw;
+  object-fit: contain;
+  background-color: #ECECEC;
 }
