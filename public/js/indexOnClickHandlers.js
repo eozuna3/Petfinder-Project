@@ -143,6 +143,8 @@ var handleSignUpSubmitBtnClick = function () {
         $("#loginMessage").empty();
         if (typeof (response.id) === "number") {
             console.log("API.signup success");
+            sessionStorage.setItem("customerId", response.id);
+            sessionStorage.setItem("userName", response.userName);
             window.location.href = "/homepage";
         }
         else {
