@@ -140,16 +140,21 @@ var handleSignUpSubmitBtnClick = function () {
     };
     API.signup(newCustomerObject).then(function (response) {
         console.log("error response object: ", response);
-        console.log("error response object: ", response.name);
-        console.log("error response object: ", response.errors[0].message);
-        if (typeof (response.id) === "undefined") $("#loginMessage").text(`Login Error: ${response.errors[0].message} MySQL error message: ${response.name}`);
-        console.log("API.signup success");  // need to resolve this condition
+        $("#loginMessage").empty();
+        if (typeof (response.id) === "number") {
+            console.log("API.signup success");
+            window.location.href = "/homepage";
+        }
+        else {
+            $("#loginMessage").text(`Login Error: ${response.errors[0].message} MySQL error message: ${response.name}`);
+            console.log("error response object: ", response.name);
+            console.log("error response object: ", response.errors[0].message);
 
-
+        }
     })
-        .catch(function (err) {
-            console.log("error response object: ", err);
-        })
+        // .catch(function (err) {
+        //     console.log("error response object: ", err);
+        // })
         ;
 
 };
