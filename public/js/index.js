@@ -140,6 +140,52 @@ function addCards() {
   }
 }
 
+addFavorites();
+
+function addFavorites() {
+  // event.preventDefault();
+  console.log("addingFavorites");
+  var one = {
+    id: 1,
+    name: "example 1",
+    full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47976881/1/?bust=1589319840&width=720"
+  }
+  var two = {
+    id: 2,
+    name: "example 2",
+    full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47978196/2/?bust=1589334635&width=720"
+  }
+  var favoritesArray = [one, two];
+  
+  for (var i = 0; i < favoritesArray.length; i++) {
+    var newDiv = $("<div>");
+    if (i === 0) {
+      newDiv.attr({ "class": "carousel-item active card", "data-id": favoritesArray[i].id });  // added data-id for onClick choose
+    } else {
+      newDiv.attr({ "class": "carousel-item card", "data-id": favoritesArray[i].id });   // added data-id for onClick choose
+    }
+    var title = $("<div>").attr("class", "card-header").html($("<h2>").text(favoritesArray[i].name));
+    newDiv.append(title);
+
+    var cBody = $("<div>").attr("class", "card-body");
+    var row = $("<div>").attr("class", "row");
+    newDiv.append(cBody);
+    cBody.append(row);
+
+    var imageHolder = $("<div>").attr("class", "col-6, petPicture");
+    var favoritedImage = $("<img>").attr("src", favoritesArray[i].full);
+    imageHolder.append(favoritedImage);
+    var textHolder = $("<div>").attr("class", "col-6, petInfo");
+    var paragraph = $("<p>").html(favoritesArray[i].name);
+    textHolder.append(paragraph);
+    row.append(imageHolder);
+    row.append(textHolder);
+    
+    
+    $("#favorited .carousel-inner").append(newDiv);
+  } 
+  
+}
 
 function addIndicators() {
   // $(".carousel-indicators").empty();
@@ -159,8 +205,6 @@ function addIndicators() {
     $(".carousel-indicators").append(listItem);
   }
 }
-
-
 
 // ** On-click events, per convention all call handlers in indexOnClickHandlers.js
 //  **ADDED BY EO
