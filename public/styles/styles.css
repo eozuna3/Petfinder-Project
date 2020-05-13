@@ -52,8 +52,43 @@ nav {
 
 #header-caro-container {
   width: 100vw;
-  height: 45vw;
+  height: 42vw;
   overflow: hidden;
+  /* background-color: #ECECEC; */
+  position: relative;
+}
+
+#header {
+  height: 40vw;
+  /* position: absolute; */
+  float: left;
+  padding-left: 2vw;
+  
+}
+
+#header-container {
+  width: 80vw;
+  color: black;
+}
+
+#homePageBtn {
+  background-color: #F78888;
+}
+
+#logOutBtn {
+  background-color: #90CCF4;
+}
+
+#searchPageBtn {
+  background-color: #F3D250;
+}
+
+#logInBtn {
+  background-color: #90CCF4;
+}
+
+#signUpBtn {
+  background-color: #F78888;
 }
 
 body {
@@ -65,19 +100,29 @@ h5.card-title {
   margin: 0px;
 }
 
+label {
+  margin-bottom: .5vw;
+}
+
+.form-control, .custom-select {
+  height: 2.8vw;
+}
+
+#header-container p {
+  display: flex;
+  font-family: 'Contrail One', cursive;
+  font-size: 6vw;
+  text-align: right;
+  margin-top: 2vw;
+}
+
 .card-body {
-  height: 10vw;
+  height: 7vw;
   overflow: auto;
 }
 
 .carousel {
   height: 35vw;
-  /* background-color: #90CCF4; */
-  /* max-height: 45vw; */
-}
-
-#header-container, #header {
-    width: 60vw;
 }
 
 a.caro-controls, #carousel-container {
@@ -99,10 +144,6 @@ button.choose {
 }
 
 .searchResultImg {
-  /* min-height: 34vw;
-  max-height: 35vw;
-  height: auto;
-  width: auto; */
   max-height: 35vw;
   object-fit: contain;
   background-color: #ECECEC;
