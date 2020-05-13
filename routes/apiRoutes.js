@@ -113,7 +113,7 @@ module.exports = function (app) {
   app.get("/api/searchPets", function (req, res) {
     console.log("params", req.query);
     var queryString = `?type=${req.query.type}&coat=${req.query.coat}&size=${req.query.size}` +
-      `&breed=${req.query.breed}&age=${req.query.age}&gender=${req.query.gender}`;
+      `&breed=${req.query.breed}&age=${req.query.age}&gender=${req.query.gender}&location=${req.query.city}`;
     console.log("queryString", queryString);
     console.log("token", process.env.PETFINDER_ACCESS_TOKEN);
     axios({
@@ -171,7 +171,12 @@ module.exports = function (app) {
     }).then(function (dbCustomers) {
       console.log("dbCustomers:", dbCustomers);
       res.json(dbCustomers);
-    });
+    })
+      .catch(function (err) {
+        console.log("error response object: ", err);
+        res.json(err);
+      })
+      ;
   });
 
 

@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable indent */
 
+// import { INTEGER } from "sequelize/types";
+
 // ** These are all called from onClick events at bottom of index.js
 
 // ** ADDED BY SB
@@ -32,7 +34,8 @@ var handleSearchSubmitBtnClick = function (event) {
             size: $("#size").val(),
             gender: $("#gender").val(),
             age: $("#age").val(),
-            coat: $("#coat").val()
+            coat: $("#coat").val(),
+            city: $("#city").val()
         };
         // console.log(query);
         API.searchPets(query).then(function () {
@@ -113,8 +116,12 @@ var handleLoginSubmitBtnClick = function () {
         if (response.length > 0) {
             sessionStorage.setItem("customerId", response[0].id);
             sessionStorage.setItem("userName", response[0].userName);
+            window.location.href = "/homepage";
             console.log("Customer Id", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
-        } else console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
+        } else {
+            console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
+            $("#loginMessage").text(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
+        }
 
     });
 };
@@ -128,12 +135,22 @@ var handleSignUpSubmitBtnClick = function () {
         userName: $("#userSignUpName").val(),
         userEmail: $("#userEmail").val(),
         userZip: $("#userZip").val(),
-        // userPassword: $("#userSignUpPassword").val(),
-        userPassword: "tester",
+        userPassword: $("#userSignUpPassword").val(),
+        // userPassword: "tester",
     };
-    API.signup(newCustomerObject).then(function () {
-        console.log("API.signup success");
-    });
+    API.signup(newCustomerObject).then(function (response) {
+        console.log("error response object: ", response);
+        console.log("error response object: ", response.name);
+        console.log("error response object: ", response.errors[0].message);
+        if (typeof (response.id) === "undefined") $("#loginMessage").text(`Login Error: ${response.errors[0].message} MySQL error message: ${response.name}`);
+        console.log("API.signup success");  // need to resolve this condition
+
+
+    })
+        .catch(function (err) {
+            console.log("error response object: ", err);
+        })
+        ;
 
 };
 
