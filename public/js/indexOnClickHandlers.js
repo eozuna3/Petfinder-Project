@@ -139,13 +139,16 @@ var handleSignUpSubmitBtnClick = function () {
         // userPassword: "tester",
     };
     API.signup(newCustomerObject).then(function (response) {
-        console.log(response);
-        if (typeof (response.id) === "undefined") console.log("API.signup success");  // need to resolve this condition
-        $("#loginMessage").text("duplicate User Id, pick another name");
+        console.log("error response object: ", response);
+        console.log("error response object: ", response.name);
+        console.log("error response object: ", response.errors[0].message);
+        if (typeof (response.id) === "undefined") $("#loginMessage").text(`Login Error: ${response.errors[0].message} MySQL error message: ${response.name}`);
+        console.log("API.signup success");  // need to resolve this condition
+
 
     })
         .catch(function (err) {
-            console.log(err);
+            console.log("error response object: ", err);
         })
         ;
 

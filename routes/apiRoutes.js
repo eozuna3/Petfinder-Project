@@ -171,7 +171,12 @@ module.exports = function (app) {
     }).then(function (dbCustomers) {
       console.log("dbCustomers:", dbCustomers);
       res.json(dbCustomers);
-    });
+    })
+      .catch(function (err) {
+        console.log("error response object: ", err);
+        res.json(err);
+      })
+      ;
   });
 
 
