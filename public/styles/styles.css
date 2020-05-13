@@ -51,32 +51,107 @@ nav {
 }
 
 #header-caro-container {
-  width: 62vw;
-  /* height: 50vw; */
+  width: 100vw;
+  height: 42vw;
   overflow: hidden;
+  /* background-color: #ECECEC; */
+  position: relative;
+}
+
+#header {
+  height: 40vw;
+  /* position: absolute; */
+  float: left;
+  padding-left: 2vw;
+  
+}
+
+#header-container {
+  width: 80vw;
+  color: black;
+}
+
+#homePageBtn {
+  background-color: #F78888;
+}
+
+#logOutBtn {
+  background-color: #90CCF4;
+}
+
+#searchPageBtn {
+  background-color: #F3D250;
+}
+
+#logInBtn {
+  background-color: #90CCF4;
+}
+
+#signUpBtn {
+  background-color: #F78888;
 }
 
 body {
   background-color: #ECECEC;
 }
 
+h5.card-title {
+  padding: 0px;
+  margin: 0px;
+}
+
+.heart {
+  width: 5vw;
+  margin: 0px;
+  float: right;
+}
+
+
+label {
+  margin-bottom: .5vw;
+}
+
+.form-control, .custom-select {
+  height: 2.8vw;
+}
+
+#header-container p {
+  display: flex;
+  font-family: 'Contrail One', cursive;
+  font-size: 6vw;
+  text-align: right;
+  margin-top: 2vw;
+}
+
 .card-body {
+  height: 7vw;
   overflow: auto;
 }
 
 .carousel {
-  width: 60vw;
-  max-height: 45vw;
+  height: 35vw;
 }
 
-#header-container, #header {
-    width: 60vw;
-}
-
-a.caro-controls {
+a.caro-controls, #carousel-container {
   display: none;
 }
 
+.carousel-indicators {
+  z-index: 100;
+}
+
+.caro-img {
+  text-align: center;
+  display: block;
+  max-height: 35vw;
+}
+
+button.choose {
+  margin-left: 1vw;
+}
+
 .searchResultImg {
-  max-height: 30vw;
+  max-height: 35vw;
+  object-fit: contain;
+  background-color: #ECECEC;
 }

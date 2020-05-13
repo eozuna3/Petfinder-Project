@@ -79,6 +79,7 @@ var handleSearchPetsBtnClick = function (event) {
 // handleChooseBtnClick is called when a pet's choose button is clicked
 // Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
 var handleChooseBtnClick = function () {
+    $(this).attr("src", "./images/favorited.png").attr("status", "favorited");
     console.log("handleChooseBtnClick");
     var petId = $(this).attr("data-id");
     var petName = $(this).attr("petName");
