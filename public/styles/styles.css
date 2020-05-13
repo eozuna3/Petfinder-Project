@@ -192,3 +192,22 @@ button.choose {
   object-fit: contain;
   background-color: #ECECEC;
 }
+
+/* Grid code adjusted from: https://css-tricks.com/seamless-responsive-photo-grid/ */
+
+#favorites-card-container {
+    
+  line-height: 0; 
+  -webkit-column-count: 3;
+  -webkit-column-gap:   0vw;
+  -moz-column-count:    3;
+  -moz-column-gap:      0vw;
+  column-count:         3;
+  column-gap:           0vw;  
+}
+
+#favorites-card-container img {
+  /* Just in case there are inline attributes */
+  width: 100%;
+  height: auto;    
+}

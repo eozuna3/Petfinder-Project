@@ -155,6 +155,7 @@ var favoritesArray = [one, two];
 addFavorites();
 
 function addFavorites() {
+  // console.log(choosePetRequestObject);
   // event.preventDefault();
   console.log("addingFavorites");
   for (var i = 0; i < favoritesArray.length; i++) {
