@@ -150,6 +150,16 @@ div.col-6.petPicture {
   padding: 0px;
 }
 
+#favorited .carousel-control-next {
+  right: 28vw;
+  top: 7vw;
+}
+
+#favorited .carousel-control-prev {
+  left: -2vw;
+  top: 7vw;
+}
+
 .petInfo {
   background-color: white;
   overflow: auto;
@@ -234,21 +244,27 @@ button.choose {
 
 #loginText-1 {
   color: white; 
+  margin-bottom: -30px;
+  padding-bottom: 10px;
 }
 
 
-#loginText-2   {
+#loginText-2 {
   color: #F3D250;
+  margin-top: 0px;
+  padding-top: 0px;
 
 }
 
 #loginText2 {
-  font-size: 3vw;
+  font-size: 2vw;
+  color: #ffffff;
 }
 
 p#loginText2 {
-  width: 40vw;
+  width: 36vw;
+  text-align: right;
   position: absolute;
-  bottom: 5vw;
-  left: 15vw;
+  bottom: 25vw;
+  right: 10vw;
 }
