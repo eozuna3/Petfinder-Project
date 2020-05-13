@@ -116,16 +116,16 @@ function addCards() {
         .attr("class", "searchResultImg card-img-top");
       newDiv.append(image);
       var cardBody = $("<div>").attr("class", "card-body");
-      var cardButton = $("<button>")                           // add button to choose
-        .addClass("btn btn-danger choose")             // add button to choose
+      var cardButton = $("<img src='./images/unfavorited.png' class='heart' status='unfavorited'>")                           // add button to choose
+        .addClass("btn choose")             // add button to choose
         .attr({
           "data-id": dummyArray[i].id,
           "petName": dummyArray[i].name,
           "petUrl": dummyArray[i].url,
           "petDescription": dummyArray[i].description,
           "petImage": dummyArray[i].photos[0].full
-        })
-        .text("Choose");                                    // add button to choose
+        });
+        // .text("Choose");                                    // add button to choose
       var cardTitle = $("<h5>")
         .attr("class", "card-title")
         .html(dummyArray[i].name);
