@@ -211,3 +211,44 @@ button.choose {
   width: 100%;
   height: auto;    
 }
+
+
+#loginBanner {
+  position: absolute;
+  top: 0vw;
+  width: 100vw;
+  transform: scale(.8);
+  z-index: -1;
+}
+
+
+
+#loginText-1, #loginText-2 {
+  font-family: 'Contrail One', cursive;
+  padding-right: 10vw;
+  text-align: right;
+  color: white; 
+  z-index: 10; 
+  font-size: 10vw;
+}
+
+#loginText-1 {
+  color: white; 
+}
+
+
+#loginText-2 {
+  color: #F3D250;
+
+}
+
+#loginText2 {
+  font-size: 3vw;
+}
+
+p#loginText2 {
+  width: 40vw;
+  position: absolute;
+  bottom: 5vw;
+  left: 15vw;
+}
