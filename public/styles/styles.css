@@ -133,6 +133,10 @@ label {
   float: none;
 }
 
+#favorited.carousel, .card {
+  height: 40vw;
+}
+
 div.card-body {
   padding: 0px;
 }
@@ -141,13 +145,9 @@ div.card-body {
   background-color: #F78888;
 }
 
-#favorited {
-  background-color: #ECECEC;
-}
 
 div.col-6.petPicture {
   padding: 0px;
-  /* background-color: red; */
 }
 
 .petInfo {
@@ -162,10 +162,10 @@ div.col-6.petPicture {
   margin: auto;
   padding: 0px;
   display: block;
-  max-height: 35vw;
+  text-align: center;
 }
 
-.carousel {
+#searchCaro.carousel {
   height: 35vw;
 }
 

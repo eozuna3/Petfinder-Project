@@ -140,23 +140,23 @@ function addCards() {
   }
 }
 
+var one = {
+  id: 1,
+  name: "example 1",
+  full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47976881/1/?bust=1589319840&width=720"
+}
+var two = {
+  id: 2,
+  name: "example 2",
+  full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47978196/2/?bust=1589334635&width=720"
+}
+var favoritesArray = [one, two];
+
 addFavorites();
 
 function addFavorites() {
   // event.preventDefault();
   console.log("addingFavorites");
-  var one = {
-    id: 1,
-    name: "example 1",
-    full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47976881/1/?bust=1589319840&width=720"
-  }
-  var two = {
-    id: 2,
-    name: "example 2",
-    full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47978196/2/?bust=1589334635&width=720"
-  }
-  var favoritesArray = [one, two];
-  
   for (var i = 0; i < favoritesArray.length; i++) {
     var newDiv = $("<div>");
     if (i === 0) {
@@ -180,11 +180,22 @@ function addFavorites() {
     textHolder.append(paragraph);
     row.append(imageHolder);
     row.append(textHolder);
-    
-    
-    $("#favorited .carousel-inner").append(newDiv);
+    $("#favorited .carousel-inner").prepend(newDiv);
   } 
-  
+  for (var i = 0; i < favoritesArray.length; i++) {
+    // console.log(i);
+    if (i === 0) {
+      var listItem = $("<li>")
+        .attr("data-target", "#hpCaro")
+        .attr("data-slide-to", i)
+        .attr("class", "active");
+    } else {
+      var listItem = $("<li>")
+        .attr("data-target", "#hpCaro")
+        .attr("data-slide-to", i);
+    }
+    $(".carousel-indicators").prepend(listItem);
+  }
 }
 
 function addIndicators() {
