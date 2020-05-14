@@ -34,8 +34,7 @@ var handleSearchSubmitBtnClick = function (event) {
             size: $("#size").val(),
             gender: $("#gender").val(),
             age: $("#age").val(),
-            coat: $("#coat").val(),
-            city: $("#city").val()
+            coat: $("#coat").val()
         };
         // console.log(query);
         API.searchPets(query).then(function () {
@@ -53,6 +52,12 @@ var handleSearchSubmitBtnClick = function (event) {
             }
         });
     });
+    $("#type").val("");
+    $("#breed").val("");
+    $("#size").val("");
+    $("#gender").val("");
+    $("#age").val("");
+    $("#coat").val("");
 }
 
 

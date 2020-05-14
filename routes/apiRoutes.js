@@ -205,6 +205,18 @@ module.exports = function (app) {
         res.json(dbChosenPets);
       })
   });
+
+  //  Load the current user/customers favorite pets into the carousel on the homepage
+  app.get("/api/loadfavorites/:id", function(req, res) {
+    console.log(req.params.id);
+    db.ChosenPet.findAll({
+      where: {
+        customerId: req.params.id
+      }
+    }).then(function(dbChosenPets) {
+      res.json(dbChosenPets);
+      });
+  });
 };
 
 

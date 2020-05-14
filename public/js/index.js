@@ -18,19 +18,7 @@ var $deleteChosenPetBtn = $(".deleteChosenPetBtn");
 var $carouselContainer = $("#carousel-container");
 
 var customerId = 0;
-var userName = "guest";
-
-// ADDED BY EO
-// Function
-/*var handleDeleteBtn = function(petId) {
-    $.ajax({
-      method: "DELETE",
-      url: "/api/posts/" + petId
-    })
-    .then(function() {
-      getPosts(postCategorySelect.val());
-    });
-}*/
+var userName = "guest"
 
 var petTypesObject; //global object with petfinder type object for search
 var petsFoundObject;
@@ -140,7 +128,7 @@ function addCards() {
   }
 }
 
-var one = {
+/*var one = {
   id: 1,
   name: "example 1",
   full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47976881/1/?bust=1589319840&width=720"
@@ -150,53 +138,55 @@ var two = {
   name: "example 2",
   full: "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/47978196/2/?bust=1589334635&width=720"
 }
-var favoritesArray = [one, two];
+//var favoritesArray = [one, two];*/
 
 addFavorites();
 
 function addFavorites() {
-  // console.log(choosePetRequestObject);
-  // event.preventDefault();
-  console.log("addingFavorites");
-  for (var i = 0; i < favoritesArray.length; i++) {
-    var newDiv = $("<div>");
-    if (i === 0) {
-      newDiv.attr({ "class": "carousel-item active card", "data-id": favoritesArray[i].id });  // added data-id for onClick choose
-    } else {
-      newDiv.attr({ "class": "carousel-item card", "data-id": favoritesArray[i].id });   // added data-id for onClick choose
-    }
-    var title = $("<div>").attr("class", "card-header").html($("<h2>").text(favoritesArray[i].name));
-    newDiv.append(title);
+  var custID = sessionStorage.getItem("customerId");
+  var favoritesArray = [];
+  API.loadFavoritePets(custID).then(function (response) {
+    console.log(response);
+    favoritesArray = response;
+    for (var i = 0; i < favoritesArray.length; i++) {
+      var newDiv = $("<div>");
+      if (i === 0) {
+        newDiv.attr({ "class": "carousel-item active card", "data-id": favoritesArray[i].id });  // added data-id for onClick choose
+      } else {
+        newDiv.attr({ "class": "carousel-item card", "data-id": favoritesArray[i].id });   // added data-id for onClick choose
+      }
+      var title = $("<div>").attr("class", "card-header").html($("<h2>").text(favoritesArray[i].petName));
+      newDiv.append(title);
 
-    var cBody = $("<div>").attr("class", "card-body");
-    var row = $("<div>").attr("class", "row");
-    newDiv.append(cBody);
-    cBody.append(row);
+      var cBody = $("<div>").attr("class", "card-body");
+      var row = $("<div>").attr("class", "row");
+      newDiv.append(cBody);
+      cBody.append(row);
 
-    var imageHolder = $("<div>").attr("class", "col-6, petPicture");
-    var favoritedImage = $("<img>").attr("src", favoritesArray[i].full);
-    imageHolder.append(favoritedImage);
-    var textHolder = $("<div>").attr("class", "col-6, petInfo");
-    var paragraph = $("<p>").html(favoritesArray[i].name);
-    textHolder.append(paragraph);
-    row.append(imageHolder);
-    row.append(textHolder);
-    $("#favorited .carousel-inner").append(newDiv);
-  } 
-  for (var i = 0; i < favoritesArray.length; i++) {
-    // console.log(i);
-    if (i === 0) {
-      var listItem = $("<li>")
-        .attr("data-target", "#hpCaro")
-        .attr("data-slide-to", i)
-        .attr("class", "active");
-    } else {
-      var listItem = $("<li>")
-        .attr("data-target", "#hpCaro")
-        .attr("data-slide-to", i);
+      var imageHolder = $("<div>").attr("class", "col-6, petPicture");
+      var favoritedImage = $("<img>").attr("src", favoritesArray[i].petImage);
+      imageHolder.append(favoritedImage);
+      var textHolder = $("<div>").attr("class", "col-6, petInfo");
+      var paragraph = $("<p>").html(favoritesArray[i].description);
+      textHolder.append(paragraph);
+      row.append(imageHolder);
+      row.append(textHolder);
+      $("#favorited .carousel-inner").append(newDiv);
+    } 
+    for (var i = 0; i < favoritesArray.length; i++) {
+      if (i === 0) {
+        var listItem = $("<li>")
+          .attr("data-target", "#hpCaro")
+          .attr("data-slide-to", i)
+          .attr("class", "active");
+      } else {
+        var listItem = $("<li>")
+          .attr("data-target", "#hpCaro")
+          .attr("data-slide-to", i);
+      }
+      $(".carousel-indicators").append(listItem);
     }
-    $(".carousel-indicators").append(listItem);
-  }
+  });
 }
 
 function addIndicators() {

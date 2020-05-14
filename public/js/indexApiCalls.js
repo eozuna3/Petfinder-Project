@@ -59,7 +59,7 @@ var API = {
     },
     login: function (customerObject) {
         //var bodyObj = customerObject
-        console.log('cutomer object', customerObject);
+        console.log('customer object', customerObject);
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
@@ -75,7 +75,11 @@ var API = {
             method: "DELETE",
             url: "/api/deletePet/" + Id
         });
+    },
+    loadFavoritePets: function(customerID){
+        return $.ajax({
+            method: "GET",
+            url: "/api/loadfavorites/" + customerID,
+        });
     }
 };
-//     return API;
-// }
