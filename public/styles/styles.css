@@ -71,24 +71,24 @@ nav {
   color: black;
 }
 
-#homePageBtn {
+.btn-primary, #logOutBtn, #logInBtn  {
+  background-color: #90CCF4;
+  border-color: #90CCF4;
+  color: black;
+}
+
+.btn-primary:hover, #logOutBtn:hover, #logInBtn:hover {
+  background-color: #5CA2D5;
+  border-color: #5CA2D5;
+  color: black;
+}
+
+#signUpBtn, #searchPageBtn, #homePageBtn {
   background-color: #F78888;
 }
 
-#logOutBtn {
-  background-color: #90CCF4;
-}
-
-#searchPageBtn {
+#signUpBtn:hover, #searchPageBtn:hover, #homePageBtn:hover {
   background-color: #F3D250;
-}
-
-#logInBtn {
-  background-color: #90CCF4;
-}
-
-#signUpBtn {
-  background-color: #F78888;
 }
 
 body {
@@ -106,7 +106,6 @@ h5.card-title {
   float: right;
 }
 
-
 label {
   margin-bottom: .5vw;
 }
@@ -123,12 +122,50 @@ label {
   margin-top: 2vw;
 }
 
-.card-body {
+#searchCaro .card-body {
   height: 7vw;
   overflow: auto;
 }
 
-.carousel {
+#favorited.card {
+  width: 80vw;
+  margin: 0 auto;
+  float: none;
+}
+
+#favorited.carousel, .card {
+  height: 40vw;
+}
+
+div.card-body {
+  padding: 0px;
+}
+
+#favorited .card-header {
+  background-color: #F78888;
+}
+
+
+div.col-6.petPicture {
+  padding: 0px;
+}
+
+.petInfo {
+  background-color: white;
+  overflow: auto;
+  padding: 0px;
+  margin-left: -15px; 
+  margin-right: 15px;
+}
+
+#favorited img {
+  margin: auto;
+  padding: 0px;
+  display: block;
+  text-align: center;
+}
+
+#searchCaro.carousel {
   height: 35vw;
 }
 
