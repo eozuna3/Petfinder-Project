@@ -150,6 +150,16 @@ div.col-6.petPicture {
   padding: 0px;
 }
 
+#favorited .carousel-control-next {
+  right: 28vw;
+  top: 7vw;
+}
+
+#favorited .carousel-control-prev {
+  left: -2vw;
+  top: 7vw;
+}
+
 .petInfo {
   background-color: white;
   overflow: auto;
@@ -191,4 +201,70 @@ button.choose {
   max-height: 35vw;
   object-fit: contain;
   background-color: #ECECEC;
+}
+
+/* Grid code adjusted from: https://css-tricks.com/seamless-responsive-photo-grid/ */
+
+#favorites-card-container {
+    
+  line-height: 0; 
+  -webkit-column-count: 3;
+  -webkit-column-gap:   0vw;
+  -moz-column-count:    3;
+  -moz-column-gap:      0vw;
+  column-count:         3;
+  column-gap:           0vw;  
+}
+
+#favorites-card-container img {
+  /* Just in case there are inline attributes */
+  width: 100%;
+  height: auto;    
+}
+
+
+#loginBanner {
+  position: absolute;
+  top: 0vw;
+  width: 100vw;
+  transform: scale(.8);
+  z-index: -1;
+}
+
+
+
+#loginText-1, #loginText-2 {
+  font-family: 'Contrail One', cursive;
+  padding-right: 10vw;
+  text-align: right;
+  color: white; 
+  z-index: 10; 
+  font-size: 10vw;
+}
+
+#loginText-1 {
+  color: white; 
+  margin-bottom: -30px;
+  padding-bottom: 10px;
+}
+
+
+#loginText-2 {
+  color: #F3D250;
+  margin-top: 0px;
+  padding-top: 0px;
+
+}
+
+#loginText2 {
+  font-size: 2vw;
+  color: #ffffff;
+}
+
+p#loginText2 {
+  width: 36vw;
+  text-align: right;
+  position: absolute;
+  bottom: 25vw;
+  right: 10vw;
 }

@@ -155,6 +155,7 @@ var favoritesArray = [one, two];
 addFavorites();
 
 function addFavorites() {
+  // console.log(choosePetRequestObject);
   // event.preventDefault();
   console.log("addingFavorites");
   for (var i = 0; i < favoritesArray.length; i++) {
@@ -180,7 +181,7 @@ function addFavorites() {
     textHolder.append(paragraph);
     row.append(imageHolder);
     row.append(textHolder);
-    $("#favorited .carousel-inner").prepend(newDiv);
+    $("#favorited .carousel-inner").append(newDiv);
   } 
   for (var i = 0; i < favoritesArray.length; i++) {
     // console.log(i);
@@ -194,7 +195,7 @@ function addFavorites() {
         .attr("data-target", "#hpCaro")
         .attr("data-slide-to", i);
     }
-    $(".carousel-indicators").prepend(listItem);
+    $(".carousel-indicators").append(listItem);
   }
 }
 
