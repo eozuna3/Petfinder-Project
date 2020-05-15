@@ -1,6 +1,9 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable indent */
 /* eslint-disable quotes */
+/*eslint quotes: [2, "backtick"]*/
+/*eslint-env es6*/
+
 
 
 // import { INTEGER } from "sequelize/types";
