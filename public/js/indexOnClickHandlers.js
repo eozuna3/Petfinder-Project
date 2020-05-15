@@ -52,12 +52,7 @@ var handleSearchSubmitBtnClick = function (event) {
             }
         });
     });
-    $("#type").val("");
-    $("#breed").val("");
-    $("#size").val("");
-    $("#gender").val("");
-    $("#age").val("");
-    $("#coat").val("");
+    
 }
 
 
