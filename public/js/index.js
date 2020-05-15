@@ -108,7 +108,7 @@ function addCards() {
         .attr("class", "searchResultImg card-img-top");
       newDiv.append(image);
       var cardBody = $("<div>").attr("class", "card-body");
-      var cardButton = $("<img src='./images/unfavorited.png' class='heart' status='unfavorited'>")                           // add button to choose
+      var cardButton = $("<img src='./images/unfavorited.png' class='heart btn' status='unfavorited'>")                           // add button to choose
         .addClass("btn choose")             // add button to choose
         .attr({
           "data-id": dummyArray[i].id,
@@ -116,10 +116,7 @@ function addCards() {
           "petUrl": dummyArray[i].url,
           "petDescription": dummyArray[i].description,
           "petImage": allPetImages
-          // dummyArray[i].photos[0].full
         });
-      // .text("Choose");                                    // add button to choose
-
       var cardTitle = $("<h5>")
         .attr("class", "card-title")
         .html(dummyArray[i].name);
@@ -197,10 +194,11 @@ function addFavorites2() {
       if (recentFave.description == null) {
         recentFave.description = "No pet description available";
       }
-      $(".card-header").append($("<h2>").html(recentFave.petName));
+      $(".card-header").append($("<h2>").html(`${recentFave.petName}`));
       $(".petInfo").append($("<p>").html(
         `${recentFave.description}<br>
-        <a href="${recentFave.url}" target="_blank">More Information</a>`
+        <a href="${recentFave.url}" target="_blank">More Information</a><br>
+        <img src='./images/favorited.png' class='heart btn deleteChosenPetBtn' data-id="${recentFave.id}" status='favorited'>`
       ))
     }
 
@@ -227,8 +225,10 @@ $(document).on("click", ".favorite-img", function () {
     }
     $(".petInfo").append($("<p>").html(
       `${clickedPic.description}<br>
-        <a href="${clickedPic.url}" target="_blank">More Information</a>`
-    ))
+        <a href="${clickedPic.url}" target="_blank">More Information</a>
+        <img src='./images/favorited.png' class='heart btn deleteChosenPetBtn' data-id='${clickedPic.id}' status='favorited'>`
+    ));
+    console.log(clickedPic.id);
     var images = clickedPic.petImage.split(',');
     console.log(images);
     for (var e = 0; e < images.length; e++) {
@@ -252,26 +252,6 @@ $(document).on("click", ".favorite-img", function () {
   })
 })
 
-function popCardInfo() {
-  for (var e = 0; e < images.length; e++) {
-    console.log(images[e]);
-    var caroImgDiv = $("<div>");
-    if (e === 0) {
-      caroImgDiv.attr("class", "carousel-item active");
-    } else {
-      caroImgDiv.attr("class", "carousel-item")
-    }
-    var caroImg = $("<img src='" + images[e] + "'>");
-    caroImgDiv.append(caroImg);
-
-    $("#favorited .carousel-inner").append(caroImgDiv);
-  }
-
-  $(".card-header").append($("<h2>").html(recentFave.petName));
-  $(".petInfo").append($("<p>").html(
-    `${recentFave.description}<br>
-    <a href="${recentFave.url}" target="_blank">More Information</a>`))
-}
 
 addFavorites2();
 
@@ -316,11 +296,13 @@ $logInSubmitBtn.on("click", function () {
 $carouselContainer.on("click", ".choose", handleChooseBtnClick);
 $loadPetTypesBtn.on("click", handleLoadPetTypesBtnClick);
 $searchPetsBtn.on("click", handleSearchPetsBtnClick);
-$petFoundList.on("click", ".choose", handleChooseBtnClick);
+// $petFoundList.on("click", ".choose", handleChooseBtnClick);
+$(document).on("click", ".choose", handleChooseBtnClick);
 $searchSubmitBtn.on("click", handleSearchSubmitBtnClick);
 $logOutBtn.on("click", handleLogOutBtnClick);
 $homePageBtn.on("click", handleHomePageBtnClick);
 $searchPageBtn.on("click", handleSearchPageBtnClick);
-$deleteChosenPetBtn.on("click", function () {
+$(document).on("click", ".deleteChosenPetBtn", function () {
   handleDeleteChosenPetBtnClick($(this).data("id"));
 });
+// $(document).on("click", ".deleteChosenPetBtn", handleDeleteChosenPetBtnClick($(this).data("id")));

@@ -81,7 +81,9 @@ var handleSearchPetsBtnClick = function (event) {
 // handleChooseBtnClick is called when a pet's choose button is clicked
 // Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
 var handleChooseBtnClick = function () {
-    $(this).attr("src", "./images/favorited.png").attr("status", "favorited");
+    console.log("hello??")
+    $(this).attr("src", "./images/favorited.png").attr("status", "favorited").attr("class", "heart btn deleteChosenPetBtn");
+    
     // console.log("handleChooseBtnClick");
     var petId = $(this).attr("data-id");
     var petName = $(this).attr("petName");
@@ -183,10 +185,14 @@ var handleSearchPageBtnClick = function () {
 };
 
 var handleDeleteChosenPetBtnClick = function (petId) {
-    console.log("Delete button for chosen pet# " + petId);
+    // console.log("Delete button for chosen pet# " + petId);
     API.deletePet(petId).then(function (response) {
-        console.log(response);
-        window.location.replace("/homepage");
+        // console.log(response);
+        if (window.location.href.indexOf("/homepage") > -1) {
+            window.location.replace("/homepage");
+        }
+        $(this).attr("src", "./images/unfavorited.png").attr("status", "unfavorited").attr("class", "heart btn choose");
+        // location.reload();
     });
 };
 

@@ -100,11 +100,25 @@ h5.card-title {
   margin: 0px;
 }
 
-.heart {
+.carousel-inner .heart {
   width: 5vw;
   margin: 0px;
   float: right;
 }
+
+.petInfo p {
+  font-size: 2rem;
+}
+
+.petInfo .heart {
+  margin: 0px;
+  padding: 0px;
+  max-height: 5vw;
+  position: absolute;
+  bottom: 1vw;
+  right: 0px;
+}
+
 
 label {
   margin-bottom: .5vw;
@@ -146,24 +160,13 @@ div.card-body {
 }
 
 #favorited .card-header {
-  background-color: #F78888;
+  background-color: #F3D250;
   height: 5vw;
 }
-
 
 div.col-6.petPicture {
   padding: 0px;
 }
-/* 
-#favorited .carousel-control-next {
-  right: 37vw;
-  top: 7vw;
-}
-
-#favorited .carousel-control-prev {
-  left: -2vw;
-  top: 7vw;
-} */
 
 .petInfo {
   background-color: white;
