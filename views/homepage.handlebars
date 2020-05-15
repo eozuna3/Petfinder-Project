@@ -20,43 +20,42 @@
 </div>
 
 <div id="favorited">
-     <div id="hpCaro" class="carousel slide container" data-ride="carousel">
-          
-          <!-- The slideshow -->
-          <div class="carousel-inner">
-
-          </div>
-
-          <!-- Indicators -->
-          <ul class="carousel-indicators">
-          </ul>
-
-          <a class="carousel-control-prev" href="#hpCaro" role="button" data-slide="prev">
-                    <span class="fave-caro-controls carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-               </a>
-               <a class="fave-caro-controls carousel-control-next" href="#hpCaro" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-               </a>
-
-     {{!-- <div class="card">
+     <div class="card container">
           <div class="card-header">
-               <h2>No Pets Favorited</h2>
           </div>
           <div class="card-body">
                <div class="row">
                     <div class="col-6 petPicture">
-                         <img src="https://lh3.googleusercontent.com/proxy/9xGa9KdF-lBWAKWqeWvG3DXrb8zHqQX6NVOFpyyhdjrwRFXhxEGu6USIPRzISp0qlcx6zY6Hmn022DD4j10MW_u91t13Iu0vFs1xAbJ0AezNAoU1KHgUDzS3jawAmXCzOqPDhP-EUD-s">
+                         <div id="hpCaro" class="carousel slide container" data-ride="carousel">
+          
+                         <!-- The slideshow -->
+                         <div class="carousel-inner">
+
+                         </div>
+
+                         {{!-- <!-- Indicators -->
+                         <ul class="carousel-indicators">
+                         </ul> --}}
+
+                         <a class="carousel-control-prev" href="#hpCaro" role="button" data-slide="prev">
+                              <span class="fave-caro-controls carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                         </a>
+                         <a class="fave-caro-controls carousel-control-next" href="#hpCaro" role="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                         </a>
+                         </div>
                     </div>
                     <div class="col-6 petInfo">
-                         <p>Search for pets and save your favorites <a href="/search">here.</a> </p>
+                         {{!-- <p>Search for pets and save your favorites <a href="/search">here.</a> </p> --}}
                     </div>
                </div>
 
           </div>
-     </div> --}}
-</div>
+     </div>
+</div> 
+
 
 <div class="container-fluid">
      <div class="row">
@@ -67,19 +66,6 @@
      </div>
 </div>
 
-
-{{!-- Container for displaying users/customers previous animal selections --}}
-{{!-- <div class="container-fluid">
-     <h3>Pets Found:</h3>
-     <ul id="chosenPetList" class="list-group">
-          {{#each ChosenPets}}
-          <li data-id="{{dataValues.id}}" class="list-group-item">
-               <a href="{{dataValues.url}}" target="_blank">{{dataValues.petName}}</a>
-               <button data-id="{{dataValues.id}}" class="btn btn-danger float-right deleteChosenPetBtn">Delete</button>
-          </li>
-          {{/each}}
-     </ul>
-</div> --}}
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/indexApiCalls.js"></script>
