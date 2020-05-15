@@ -6,6 +6,10 @@ The Coronavirus lockdown has resulted in stories of [people looking to adopt pet
 
 
 ### User Documentation
+Watch this video
+
+Click here to go to [Petfinder](https://project-bbers.herokuapp.com/)
+
 ````
 TBD
 ````

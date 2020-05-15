@@ -121,7 +121,7 @@ var handleLoginSubmitBtnClick = function () {
             window.location.href = "/homepage";
             console.log("Customer Id", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
         } else {
-            console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
+            // console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
             $("#loginMessage").text(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
         }
 

@@ -11,7 +11,9 @@ notifications:
 cache:
   directories:
     - node_modules
-before_install:
-  - mysql -e 'CREATE DATABASE testdb;'
 script:
   - echo "hello world"
+  - npm run lint
+# before_install:
+  # - mysql -e 'CREATE DATABASE testdb;'
+ 
