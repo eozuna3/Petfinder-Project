@@ -143,42 +143,64 @@ function addCards() {
 
 function addFavorites2 () {
   var custID = sessionStorage.getItem("customerId");
+  var userName = sessionStorage.getItem("userName");
+  $("#welcomeText").text(`Welcome ${userName}`);
   var favoritesArray = [];
   API.loadFavoritePets(custID).then(function (response) {
-    // console.log(response);
+    console.log(response);
     favoritesArray = response;
-    var recentFave = favoritesArray[favoritesArray.length-1];
+    console.log(favoritesArray);
+    if (favoritesArray.length === 0) {
+      $("a.fave-caro-controls").css("display", "none");
+      var noFaveImage = $("<img src='./images/spiderpug.png'>");
+      $("#favorited .carousel-inner").append(noFaveImage);
+      $(".card-header").append($("<h2>").html("No pets currently favorited"));
+      $(".petInfo").append($("<p>").html(
+        `Search for pets and save your favorites using our <a href="/search">search page.</a>`
+      ))
+    }
+    else {
+      var recentFave = favoritesArray[favoritesArray.length-1];
     // console.log(recentFave);
-    for (var i = 0; i < favoritesArray.length; i++) {
+      for (var i = 0; i < favoritesArray.length; i++) {
       // adds images below card
-      var images = favoritesArray[i].petImage.split(',');
-      var img = $("<img src='" + images[0] + "'>");
-      img.attr({
-        "class": "favorite-img",
-        "data-id": favoritesArray[i].id});
-      $("#favorites-card-container").prepend(img);
-      // console.log(img.data("id"));
-    }
-
-    for (var e = 0; e < images.length; e++) {
-      console.log(images[e]);
-      var caroImgDiv = $("<div>");
-      if (e === 0) {
-        caroImgDiv.attr("class", "carousel-item active");
-      } else {
-        caroImgDiv.attr("class", "carousel-item")
+        var images = favoritesArray[i].petImage.split(',');
+        var img = $("<img src='" + images[0] + "'>");
+        img.attr({
+          "class": "favorite-img",
+          "data-id": favoritesArray[i].id});
+        $("#favorites-card-container").prepend(img);
+        // console.log(img.data("id"));
       }
-      var caroImg =  $("<img src='" + images[e] + "'>");
-      caroImgDiv.append(caroImg);
 
-      $("#favorited .carousel-inner").append(caroImgDiv);
+      for (var e = 0; e < images.length; e++) {
+        var caroImgDiv = $("<div>");
+        if (e === 0) {
+          caroImgDiv.attr("class", "carousel-item active");
+        } else {
+          caroImgDiv.attr("class", "carousel-item")
+        }
+        var caroImg =  $("<img src='" + images[e] + "'>");
+        caroImgDiv.append(caroImg);
+
+        $("#favorited .carousel-inner").append(caroImgDiv);
+      }
+      if (images.length === 1) {
+        $("a.fave-caro-controls").css("display", "none");
+      }
+      else {
+        $("a.fave-caro-controls").css("display", "flex");
+      }
+      if (recentFave.description == null) {
+        recentFave.description = "No pet description available";
+      }
+      $(".card-header").append($("<h2>").html(recentFave.petName));
+      $(".petInfo").append($("<p>").html(
+        `${recentFave.description}<br>
+        <a href="${recentFave.url}" target="_blank">More Information</a>`
+      ))
     }
-
-    $(".card-header").append($("<h2>").html(recentFave.petName));
-    $(".petInfo").append($("<p>").html(
-      `${recentFave.description}<br>
-      <a href="${recentFave.url}" target="_blank">More Information</a>`
-    ))
+    
   })
 }
 
@@ -197,6 +219,9 @@ $(document).on("click",".favorite-img", function() {
       $(".petInfo").empty();
       $("#favorited .carousel-inner").empty()
       $(".card-header").append($("<h2>").text(clickedPic.petName));
+      if (clickedPic.description == null) {
+        clickedPic.description = "No pet description available";
+      }
       $(".petInfo").append($("<p>").html(
         `${clickedPic.description}<br>
         <a href="${clickedPic.url}" target="_blank">More Information</a>`
@@ -212,8 +237,14 @@ $(document).on("click",".favorite-img", function() {
         }
         var caroImg =  $("<img src='" + images[e] + "'>");
         caroImgDiv.append(caroImg);
-  
+        
         $("#favorited .carousel-inner").append(caroImgDiv);
+      }
+      if (images.length === 1) {
+        $("a.fave-caro-controls").css("display", "none");
+      }
+      else {
+        $("a.fave-caro-controls").css("display", "flex");
       }
   })
 })
@@ -241,64 +272,6 @@ function popCardInfo () {
 
 addFavorites2();
 
-function addFavorites() {
-  var custID = sessionStorage.getItem("customerId");
-  var favoritesArray = [];
-  API.loadFavoritePets(custID).then(function (response) {
-    // console.log(response);
-    favoritesArray = response;
-    for (var i = 0; i < favoritesArray.length; i++) {
-      var newDiv = $("<div>");
-      if (i === 0) {
-        newDiv.attr({ "class": "carousel-item active card", "data-id": favoritesArray[i].id });  // added data-id for onClick choose
-      } else {
-        newDiv.attr({ "class": "carousel-item card", "data-id": favoritesArray[i].id });   // added data-id for onClick choose
-      }
-      var title = $("<div>").attr("class", "card-header").html($("<h2>").text(favoritesArray[i].petName));
-      newDiv.append(title);
-
-      var cBody = $("<div>").attr("class", "card-body");
-      var row = $("<div>").attr("class", "row");
-      newDiv.append(cBody);
-      cBody.append(row);
-
-      var imageHolder = $("<div>").attr("class", "col-6 petPicture");
-      var favoritedImage = $("<img>").attr("src", favoritesArray[i].petImage);
-      imageHolder.append(favoritedImage);
-      var textHolder = $("<div>").attr("class", "col-6 petInfo");
-      var paragraph = $("<p>").html(favoritesArray[i].description);
-      textHolder.append(paragraph);
-      row.append(imageHolder);
-      row.append(textHolder);
-      $("#favorited .carousel-inner").append(newDiv);
-    } 
-
-    for (var i = 0; i < favoritesArray.length; i++) {
-      // var card = $("<div class='card mx-auto'>");
-      var img = $("<img src='" + favoritesArray[i].petImage + "'>");
-      // card.append(img);
-      // var cardBody = $("<div class='card-body'>");
-      // var cardTitle = $("<h5 class='card-title'>" + favoritesArray[i].petName + "</h5>");
-      // cardBody.append(cardTitle);
-      // card.append(cardTitle);
-      $("#favorites-card-container").append(img);
-
-  }
-    // for (var i = 0; i < favoritesArray.length; i++) {
-    //   if (i === 0) {
-    //     var listItem = $("<li>")
-    //       .attr("data-target", "#hpCaro")
-    //       .attr("data-slide-to", i)
-    //       .attr("class", "active");
-    //   } else {
-    //     var listItem = $("<li>")
-    //       .attr("data-target", "#hpCaro")
-    //       .attr("data-slide-to", i);
-    //   }
-    //   $(".carousel-indicators").append(listItem);
-    // }
-  });
-}
 
 function addIndicators() {
   // $(".carousel-indicators").empty();
