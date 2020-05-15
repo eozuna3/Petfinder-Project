@@ -34,8 +34,7 @@ var handleSearchSubmitBtnClick = function (event) {
             size: $("#size").val(),
             gender: $("#gender").val(),
             age: $("#age").val(),
-            coat: $("#coat").val(),
-            city: $("#city").val()
+            coat: $("#coat").val()
         };
         // console.log(query);
         API.searchPets(query).then(function () {
@@ -53,6 +52,7 @@ var handleSearchSubmitBtnClick = function (event) {
             }
         });
     });
+    
 }
 
 
@@ -80,14 +80,15 @@ var handleSearchPetsBtnClick = function (event) {
 // Sends the petfinder unique ID and customer ID to be stored in chosenPetsDB
 var handleChooseBtnClick = function () {
     $(this).attr("src", "./images/favorited.png").attr("status", "favorited");
-    console.log("handleChooseBtnClick");
+    // console.log("handleChooseBtnClick");
     var petId = $(this).attr("data-id");
     var petName = $(this).attr("petName");
     var petUrl = $(this).attr("petUrl");
     var petDescription = $(this).attr("petDescription");
     var petId = $(this).attr("data-id");
     var petImage = $(this).attr("petImage");
-    console.log("idChosen", petId);
+    console.log($(this).attr("petImage"));
+    // console.log("idChosen", petId);
     var customerId = sessionStorage.getItem("customerId");
     var choosePetRequestObject = {
         petId: petId,

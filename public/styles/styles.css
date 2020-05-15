@@ -137,28 +137,33 @@ label {
   height: 40vw;
 }
 
+#favorited img {
+  height: 35vw;
+}
+
 div.card-body {
   padding: 0px;
 }
 
 #favorited .card-header {
   background-color: #F78888;
+  height: 5vw;
 }
 
 
 div.col-6.petPicture {
   padding: 0px;
 }
-
+/* 
 #favorited .carousel-control-next {
-  right: 28vw;
+  right: 37vw;
   top: 7vw;
 }
 
 #favorited .carousel-control-prev {
   left: -2vw;
   top: 7vw;
-}
+} */
 
 .petInfo {
   background-color: white;
@@ -206,14 +211,15 @@ button.choose {
 /* Grid code adjusted from: https://css-tricks.com/seamless-responsive-photo-grid/ */
 
 #favorites-card-container {
+  margin-top: 2vw;
     
-  line-height: 0; 
-  -webkit-column-count: 3;
-  -webkit-column-gap:   0vw;
-  -moz-column-count:    3;
-  -moz-column-gap:      0vw;
-  column-count:         3;
-  column-gap:           0vw;  
+  line-height: 1vw; 
+  -webkit-column-count: 4;
+  -webkit-column-gap:   1vw;
+  -moz-column-count:    4;
+  -moz-column-gap:      1vw;
+  column-count:         4;
+  column-gap:           1vw;  
 }
 
 #favorites-card-container img {
@@ -254,6 +260,10 @@ button.choose {
   margin-top: 0px;
   padding-top: 0px;
 
+}
+
+.petPicture img {
+  width: 100%;
 }
 
 #loginText2 {
