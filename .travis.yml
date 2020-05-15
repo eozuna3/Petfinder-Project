@@ -5,9 +5,12 @@ branches:
   - master
 notifications:
   email:
-  - stevenbowler@yahoo.com
-  - bailee.dast@gmail.com
-  - eo30239@gmail.com
+    recipients:
+    - stevenbowler@yahoo.com
+    - bailee.dast@gmail.com
+    - eo30239@gmail.com
+    on_success: always # fault: change
+    on_failure: always # default: always
 cache:
   directories:
     - node_modules
