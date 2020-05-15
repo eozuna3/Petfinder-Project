@@ -145,7 +145,7 @@ function addFavorites2 () {
   var custID = sessionStorage.getItem("customerId");
   var favoritesArray = [];
   API.loadFavoritePets(custID).then(function (response) {
-    // console.log(response);
+    console.log(response);
     favoritesArray = response;
     console.log(favoritesArray);
     if (favoritesArray.length === 0) {
