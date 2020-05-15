@@ -1,0 +1,272 @@
+/* 
+Pink - #F78888
+Yellow - #F3D250
+Grey - #ECECEC
+Light Blue - #90CCF4
+Dark Blue - #5CA2D5
+White - #ffffff
+Black - #000000
+
+font-family: 'Contrail One', cursive;
+font-family: 'Lato', sans-serif;
+*/
+a, form, p, span, select, button, h1, h3, h4, h5, h6 {
+  font-family: "Lato", sans-serif;
+}
+
+h2 {
+  font-family: "Contrail One", cursive;
+}
+
+body {
+  background-color: #ECECEC;
+}
+
+.list-group-item {
+  line-height: 2.5;
+}
+
+#header-caro-container {
+  width: 100vw;
+  height: 42vw;
+  overflow: hidden;
+  /* background-color: #ECECEC; */
+  position: relative;
+}
+
+#header-caro-container #header-container {
+  width: 80vw;
+  color: black;
+}
+
+#header-caro-container #header-container #header {
+  height: 40vw;
+  /* position: absolute; */
+  float: left;
+  padding-left: 2vw;
+}
+
+nav {
+  background-color: #ffffff;
+  height: 8vw;
+  position: relative;
+  top: 0vw;
+  border-top: none;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+nav #navLogo {
+  width: 12%;
+  display: block;
+  top: -1.7vw;
+  position: absolute;
+  z-index: 10;
+}
+
+nav #navTitle {
+  font-family: 'Contrail One', cursive;
+  position: relative;
+  left: 11vw;
+  color: #90CCF4;
+  font-size: 2vw;
+}
+
+.btn-primary, #logOutBtn, #logInBtn {
+  background-color: #90CCF4;
+  border-color: #90CCF4;
+  color: black;
+}
+
+.btn-primary:hover, #logOutBtn:hover, #logInBtn:hover {
+  background-color: #5CA2D5;
+  border-color: #5CA2D5;
+  color: black;
+}
+
+#signUpBtn, #searchPageBtn, #homePageBtn {
+  background-color: #F78888;
+}
+
+#signUpBtn:hover, #searchPageBtn:hover, #homePageBtn:hover {
+  background-color: #F3D250;
+}
+
+h5.card-title {
+  padding: 0px;
+  margin: 0px;
+}
+
+.carousel-inner .heart {
+  width: 5vw;
+  margin: 0px;
+  float: right;
+}
+
+.carousel-inner .searchResultImg {
+  max-height: 35vw;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-color: #ECECEC;
+}
+
+.petInfo {
+  background-color: white;
+  height: 34vw;
+  overflow: auto;
+  padding: 0px;
+  margin-left: -15px;
+  margin-right: 15px;
+}
+
+.petInfo p {
+  font-size: 2rem;
+}
+
+.petInfo .heart {
+  margin: 0px;
+  padding: 0px;
+  max-height: 5vw;
+  position: absolute;
+  bottom: 1vw;
+  right: 0px;
+}
+
+label {
+  margin-bottom: .5vw;
+}
+
+.form-control, .custom-select {
+  height: 2.8vw;
+}
+
+#header-container p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'Contrail One', cursive;
+  font-size: 6vw;
+  text-align: right;
+  margin-top: 2vw;
+}
+
+#searchCaro .card-body {
+  height: 7vw;
+  overflow: auto;
+}
+
+#favorited .card {
+  width: 80vw;
+  margin: 0 auto;
+  float: none;
+}
+
+#favorited .carousel {
+  height: 40vw;
+}
+
+#favorited img {
+  height: 35vw;
+  margin: auto;
+  padding: 0px;
+  display: block;
+  text-align: center;
+}
+
+#favorited .card-header {
+  background-color: #F3D250;
+  height: 5vw;
+}
+
+.card {
+  height: 40vw;
+}
+
+div.card-body {
+  padding: 0px;
+}
+
+div.col-6.petPicture {
+  padding: 0px;
+}
+
+#searchCaro.carousel {
+  height: 35vw;
+}
+
+a.caro-controls, #carousel-container {
+  display: none;
+}
+
+.carousel-indicators {
+  z-index: 100;
+}
+
+.caro-img {
+  text-align: center;
+  display: block;
+  max-height: 35vw;
+}
+
+/* Grid code adjusted from: https://css-tricks.com/seamless-responsive-photo-grid/ */
+#favorites-card-container {
+  margin-top: 2vw;
+  line-height: 1vw;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 1vw;
+  -moz-column-count: 4;
+  -moz-column-gap: 1vw;
+  column-count: 4;
+  column-gap: 1vw;
+}
+
+#favorites-card-container img {
+  /* Just in case there are inline attributes */
+  width: 100%;
+  height: auto;
+}
+
+#loginBanner {
+  position: absolute;
+  top: 0vw;
+  width: 100vw;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  z-index: -1;
+}
+
+#loginContainer #loginText-1, #loginContainer #loginText-2 {
+  font-family: 'Contrail One', cursive;
+  padding-right: 10vw;
+  text-align: right;
+  color: white;
+  z-index: 10;
+  font-size: 10vw;
+}
+
+#loginContainer #loginText-1 {
+  color: white;
+  margin-bottom: -30px;
+  padding-bottom: 10px;
+}
+
+#loginContainer #loginText-2 {
+  color: #F3D250;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+#loginContainer p#loginText2 {
+  width: 36vw;
+  text-align: right;
+  position: absolute;
+  bottom: 25vw;
+  right: 10vw;
+  font-size: 2vw;
+  color: #ffffff;
+}
+
+.petPicture img {
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */
