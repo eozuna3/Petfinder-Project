@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable indent */
+/* eslint-disable quotes */
+
 
 // import { INTEGER } from "sequelize/types";
 
@@ -52,7 +54,7 @@ var handleSearchSubmitBtnClick = function (event) {
             }
         });
     });
-    
+
 }
 
 

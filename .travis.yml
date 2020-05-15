@@ -14,7 +14,7 @@ cache:
 script:
   - echo "hello world"
   - npm run lint
-  - mocha
+  - npm run testMocha
 # before_install:
   # - mysql -e 'CREATE DATABASE testdb;'
  
