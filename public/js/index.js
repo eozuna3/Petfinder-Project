@@ -143,6 +143,8 @@ function addCards() {
 
 function addFavorites2 () {
   var custID = sessionStorage.getItem("customerId");
+  var userName = sessionStorage.getItem("userName");
+  $("#welcomeText").text(`Welcome ${userName}`);
   var favoritesArray = [];
   API.loadFavoritePets(custID).then(function (response) {
     console.log(response);
