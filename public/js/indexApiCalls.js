@@ -60,7 +60,8 @@ var API = {
     login: function (customerObject) {
         //var bodyObj = customerObject
 
-        console.log("cutomer object", customerObject);
+
+        console.log("customer object", customerObject);
 
         return $.ajax({
             headers: {
@@ -78,7 +79,7 @@ var API = {
             url: "/api/deletePet/" + Id
         });
     },
-    loadFavoritePets: function(customerID){
+    loadFavoritePets: function (customerID) {
         return $.ajax({
             method: "GET",
             url: "/api/loadfavorites/" + customerID,
