@@ -3,8 +3,15 @@ node_js: "8"
 branches:
   only:
   - master
+notifications:
+  email:
+  - stevenbowler@yahoo.com
+  - bailee.dast@gmail.com
+  - eo30239@gmail.com
 cache:
   directories:
     - node_modules
 before_install:
   - mysql -e 'CREATE DATABASE testdb;'
+script:
+  - echo "hello world"
