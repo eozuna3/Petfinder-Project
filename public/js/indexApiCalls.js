@@ -59,7 +59,13 @@ var API = {
     },
     login: function (customerObject) {
         //var bodyObj = customerObject
+<<<<<<< HEAD
         console.log("cutomer object", customerObject);
+=======
+
+        console.log("cutomer object", customerObject);
+
+>>>>>>> 408e18e77052b60a2515184e2561754b930b165e
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
