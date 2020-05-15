@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
