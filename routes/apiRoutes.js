@@ -1,6 +1,9 @@
 /* eslint-disable quotes */
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
+/*eslint quotes: [2, "backtick"]*/
+/*eslint-env es6*/
+
 
 require("dotenv").config();
 var db = require("../models");
@@ -207,15 +210,15 @@ module.exports = function (app) {
   });
 
   //  Load the current user/customers favorite pets into the carousel on the homepage
-  app.get("/api/loadfavorites/:id", function(req, res) {
+  app.get("/api/loadfavorites/:id", function (req, res) {
     console.log(req.params.id);
     db.ChosenPet.findAll({
       where: {
         customerId: req.params.id
       }
-    }).then(function(dbChosenPets) {
+    }).then(function (dbChosenPets) {
       res.json(dbChosenPets);
-      });
+    });
   });
 };
 

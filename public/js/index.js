@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable indent */
 /* eslint-disable quotes */
+/*eslint quotes: [2, "backtick"]*/
+/*eslint-env es6*/
 
 // Get references to page elements
 
