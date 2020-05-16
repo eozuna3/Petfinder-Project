@@ -158,7 +158,7 @@ function addFavorites2() {
       $(".card-header").append($("<h2>").html("No pets currently favorited"));
       $(".petInfo").append($("<p>").html(
         `Search for pets and save your favorites using our <a href="/search">search page.</a>`
-      ))
+      ));
     }
     else {
       var recentFave = favoritesArray[favoritesArray.length - 1];
@@ -213,14 +213,14 @@ $(document).on("click", ".favorite-img", function () {
   var custID = sessionStorage.getItem("customerId");
   API.loadFavoritePets(custID).then(function (response) {
     for (var i = 0; i < response.length; i++) {
-      if (response[i].id == thisPet) {
+      if (response[i].id === thisPet) {
         var clickedPic = response[i];
       }
     }
     console.log(clickedPic);
     $(".card-header").empty();
     $(".petInfo").empty();
-    $("#favorited .carousel-inner").empty()
+    $("#favorited .carousel-inner").empty();
     $(".card-header").append($("<h2>").text(clickedPic.petName));
     if (clickedPic.description == null) {
       clickedPic.description = "No pet description available";
@@ -251,15 +251,15 @@ $(document).on("click", ".favorite-img", function () {
     else {
       $("a.fave-caro-controls").css("display", "flex");
     }
-  })
-})
+  });
+});
 
 
 addFavorites2();
 
 
 function addIndicators() {
-  // $(".carousel-indicators").empty();
+  $(".carousel-indicators").empty();
   var dummyArray = petsFoundObject.petsFound;   // petsFoundObject is a global set in apiRoutes.js /searchPets route
   for (var i = 0; i < dummyArray.length; i++) {
     // console.log(i);
