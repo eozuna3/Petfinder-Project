@@ -97,6 +97,19 @@ h5.card-title {
   margin: 0px;
 }
 
+.modal-body {
+  font-family: "Lato", sans-serif;
+  font-size: 1.2em;
+}
+
+.modal-footer .btn {
+  background-color: #F78888;
+}
+
+.modal-footer .btn:hover {
+  background-color: #F3D250;
+}
+
 .carousel-inner .heart {
   width: 5vw;
   margin: 0px;

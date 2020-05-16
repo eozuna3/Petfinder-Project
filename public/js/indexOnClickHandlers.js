@@ -126,7 +126,9 @@ var handleLoginSubmitBtnClick = function () {
             console.log("Customer Id", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
         } else {
             // console.log(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
-            $("#loginMessage").text(`Either no username or incorrect password for userName: ${$('#userName').val()}`);
+            $("#errorModal").modal("show");
+            $("#loginMessage").empty();
+            $("#loginMessage").text(`User name not registered or incorrect password entered for user name: ${$('#userName').val()}`);
         }
 
     });
@@ -154,7 +156,8 @@ var handleSignUpSubmitBtnClick = function () {
             window.location.href = "/homepage";
         }
         else {
-            $("#loginMessage").text(`Login Error: ${response.errors[0].message} MySQL error message: ${response.name}`);
+            $("#errorModal").modal("show");
+            $("#loginMessage").html(`User name already in use - please try a different user name`);
             console.log("error response object: ", response.name);
             console.log("error response object: ", response.errors[0].message);
 

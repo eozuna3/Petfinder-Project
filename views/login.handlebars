@@ -19,6 +19,22 @@
      <p id="loginText2">Find and favorite your future pet with Your Friendly Neighborhood Pet Finder</p>
 </div>
 
+
+<div class="modal fade" id="errorModal">
+     <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+               <div class="modal-body">
+                    <h2>Error:</h2><br>
+                    <div id="loginMessage"></div>
+               </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+               </div>
+          </div>
+     </div>
+</div>
+
+
 {{!-- Modals for Logging In --}}
 <div class="modal fade" id="logInModal">
      <div class="modal-dialog modal-dialog-centered">
@@ -92,9 +108,8 @@
           </div>
      </div>
 </div>
-<div id="loginMessage"></div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script src="/js/indexApiCalls.js"></script>
 <script src="/js/indexOnClickHandlers.js"></script>
 <script src="/js/index.js"></script>
