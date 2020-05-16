@@ -246,22 +246,30 @@ a, form, p, span, select, button, h1, h3, h4, h5, h6 {
     height: auto;    
   }
   
-  #loginBanner {
-    position: absolute;
-    top: 0vw;
-    width: 100vw;
-    transform: scale(.8);
-    z-index: -1;
-  }
+  // #loginBanner {
+  //   position: absolute;
+  //   top: 0vw;
+  //   width: 100vw;
+  //   transform: scale(.8);
+  //   z-index: -1;
+  // }
 
   #loginContainer {
+    height: 48vw;
+    width: 80vw;
+    // background-color: black;
+    background-image: url("../images/loginBanner.jpg");
+    background-repeat: none;
+    background-size: cover;
     #loginText-1, #loginText-2 {
         font-family: 'Contrail One', cursive;
-        padding-right: 10vw;
+        padding-right: 1vw;
         text-align: right;
+        // float: right;
         color: white; 
         z-index: 10; 
         font-size: 10vw;
+        right: 1vw;
       }
       #loginText-1 {
         color: white; 
@@ -277,8 +285,8 @@ a, form, p, span, select, button, h1, h3, h4, h5, h6 {
         width: 36vw;
         text-align: right;
         position: absolute;
-        bottom: 25vw;
-        right: 10vw;
+        // bottom: 25vw;
+        right: 1vw;
         font-size: 2vw;
         color: #ffffff;
       }

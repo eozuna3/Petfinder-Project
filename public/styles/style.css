@@ -239,22 +239,22 @@ a.caro-controls, #carousel-container {
   height: auto;
 }
 
-#loginBanner {
-  position: absolute;
-  top: 0vw;
-  width: 100vw;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-  z-index: -1;
+#loginContainer {
+  height: 48vw;
+  width: 80vw;
+  background-image: url("../images/loginBanner.jpg");
+  background-repeat: none;
+  background-size: cover;
 }
 
 #loginContainer #loginText-1, #loginContainer #loginText-2 {
   font-family: 'Contrail One', cursive;
-  padding-right: 10vw;
+  padding-right: 1vw;
   text-align: right;
   color: white;
   z-index: 10;
   font-size: 10vw;
+  right: 1vw;
 }
 
 #loginContainer #loginText-1 {
@@ -273,8 +273,7 @@ a.caro-controls, #carousel-container {
   width: 36vw;
   text-align: right;
   position: absolute;
-  bottom: 25vw;
-  right: 10vw;
+  right: 1vw;
   font-size: 2vw;
   color: #ffffff;
 }
