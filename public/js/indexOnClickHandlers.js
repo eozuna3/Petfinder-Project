@@ -121,7 +121,7 @@ var handleLoginSubmitBtnClick = function () {
     };
     console.log("customerObject", customerObject);
     API.login(customerObject).then(function (response) {
-        console.log("API.login success");
+        console.log("API.login success" + response);
         if (response.length > 0) {
             sessionStorage.setItem("customerId", response[0].id);
             sessionStorage.setItem("userName", response[0].userName);

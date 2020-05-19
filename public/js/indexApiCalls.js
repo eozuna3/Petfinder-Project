@@ -58,9 +58,6 @@ var API = {
         });
     },
     login: function (customerObject) {
-        //var bodyObj = customerObject
-
-
         console.log("customer object", customerObject);
 
         return $.ajax({
@@ -71,7 +68,6 @@ var API = {
             url: "api/login",
             data: customerObject
         });
-        // .then(function () { location.reload() })
     },
     deletePet: function (Id) {
         return $.ajax({

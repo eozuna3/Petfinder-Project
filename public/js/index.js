@@ -78,7 +78,6 @@ function addCards() {
     $("a.caro-controls").css("display", "flex");
 
     for (var i = 0; i < dummyArray.length; i++) {
-      // console.log(dummyArray[i]);
       // if the survey has been taken and there are results, add images to cards in the carousel
       var newDiv = $("<div class='caro-img'>");
       if (i === 0) {
@@ -281,13 +280,11 @@ function addIndicators() {
 //  **ADDED BY EO
 $signUpSubmitBtn.on("click", function () {
   handleSignUpSubmitBtnClick();
-  // window.location.href = "/homepage";
 });
 
 $logInSubmitBtn.on("click", function () {
   console.log('log in button clicked');
   handleLoginSubmitBtnClick();
-  // window.location.href = "/homepage";
   console.log("customerId returned", sessionStorage.getItem("customerId"));
   console.log("Customer Id and username returned", sessionStorage.getItem("customerId"), "userName: ", sessionStorage.getItem("userName"));
 
